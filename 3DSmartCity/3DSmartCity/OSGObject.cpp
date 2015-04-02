@@ -19,7 +19,10 @@ COSGObject::COSGObject(HWND hWnd)
 
 COSGObject::~COSGObject(void)
 {
-
+	mViewer->setDone(true);
+	Sleep(1000);
+	mViewer->stopThreading();
+	delete mViewer;
 }
 
 void COSGObject::InitOSG()
@@ -38,8 +41,9 @@ void COSGObject::InitSceneGraph()
 	mRoot->addChild(mp);
 	mRoot->addChild(mLabels);
 	mapNode=dynamic_cast<osgEarth::MapNode*>(mp.get());
-	
-	osg::StateSet* stateset = mapNode->getOrCreateStateSet();
+
+	//osg::StateSet* stateset = mapNode->getOrCreateStateSet();
+	osg::StateSet* stateset = mRoot->getOrCreateStateSet();
 	//stateset->setMode(GL_LIGHTING,osg::StateAttribute::OFF);
 	stateset->setMode(GL_DEPTH_TEST,osg::StateAttribute::ON);
 }
@@ -77,6 +81,9 @@ void COSGObject::InitCameraConfig()//初始化相机
 	//end     dialog of mark
 
 	//begin 横断面分析
+	mCSLine=new osg::Group();
+	mRoot->addChild(mCSLine);
+	mViewer->addEventHandler(new CCSection(mapNode, mViewer,mCSLine,& isDrawLineStart));
 	//end	横断面分析
 
 	//dc begin	管线统计---------------------------------------
@@ -142,8 +149,8 @@ void COSGObject::InitOsgEarth()
 	}
 	em->getSettings()->setArcViewpointTransitions(true);
 	mViewer->setCameraManipulator(em);
-		em->setViewpoint( Viewpoint(
-		126.660, 45.78, 20,   // longitude, latitude, altitude
+	em->setViewpoint( osgEarth::Viewpoint(
+		126.660, 45.75, 20,   // longitude, latitude, altitude
 		24.261, -29.6, 3450.0), // heading, pitch, range
 		5.0 );
 
@@ -175,43 +182,43 @@ void COSGObject::InitOsgEarth()
 		layernames.push_back(it->get()->getName());
 	}
 
-	china_boundaries=mapNode->getMap()->getImageLayerByName("world_boundaries");
+	//china_boundaries=mapNode->getMap()->getImageLayerByName("world_boundaries");
 
 }
-void COSGObject::setChinaBoundariesOpacity(double opt)
-{
-	if(china_boundaries)
-	{
-		china_boundaries->setOpacity(opt);
-	}
-}
-double COSGObject::getChinaBoundariesOpacity()
-{
-	if(china_boundaries)
-	{
-		return china_boundaries->getOpacity();
-	}
-	else
-	{
-		return -1;
-	}
-}
-void COSGObject::rmvChinaBounds()
-{
-
-	if(china_boundaries)
-	{
-		mapNode->getMap()->removeImageLayer(china_boundaries);
-
-	}
-}
-void COSGObject::addChinaBounds()
-{
-	if(china_boundaries)
-	{
-		mapNode->getMap()->addImageLayer(china_boundaries);
-	}
-}
+//void COSGObject::setChinaBoundariesOpacity(double opt)
+//{
+//	if(china_boundaries)
+//	{
+//		china_boundaries->setOpacity(opt);
+//	}
+//}
+//double COSGObject::getChinaBoundariesOpacity()
+//{
+//	if(china_boundaries)
+//	{
+//		return china_boundaries->getOpacity();
+//	}
+//	else
+//	{
+//		return -1;
+//	}
+//}
+//void COSGObject::rmvChinaBounds()
+//{
+//
+//	if(china_boundaries)
+//	{
+//		mapNode->getMap()->removeImageLayer(china_boundaries);
+//
+//	}
+//}
+//void COSGObject::addChinaBounds()
+//{
+//	if(china_boundaries)
+//	{
+//		mapNode->getMap()->addImageLayer(china_boundaries);
+//	}
+//}
 
 void COSGObject::addPipe(string pipeName,string pointName)
 {
@@ -219,7 +226,7 @@ void COSGObject::addPipe(string pipeName,string pointName)
 	addpipes->InitAddPipe(pipeName,pointName);
 	//addpipes->Addpipes(mapNode);
 	mPipeGroup = addpipes->Addpipes(mapNode,mRoot);
-	
+
 	delete addpipes;
 }
 
@@ -286,7 +293,7 @@ void COSGObject::buildingView(void)
 		if(child->getName().compare("pipes") == 0)
 		{
 			child->setNodeMask(0x00);
-			
+
 		}
 	}
 
