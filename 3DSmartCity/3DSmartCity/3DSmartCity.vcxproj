@@ -265,6 +265,8 @@
     <ClInclude Include="StatisticDialog.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
+    <ClInclude Include="TrackPipeDialog.h" />
+    <ClInclude Include="TrackPipeHandler.h" />
     <ClInclude Include="VSection.h" />
     <ClInclude Include="VSectionDlg.h" />
   </ItemGroup>
@@ -320,6 +322,8 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
+    <ClCompile Include="TrackPipeDialog.cpp" />
+    <ClCompile Include="TrackPipeHandler.cpp" />
     <ClCompile Include="VSection.cpp" />
     <ClCompile Include="VSectionDlg.cpp" />
   </ItemGroup>

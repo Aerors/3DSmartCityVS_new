@@ -3,6 +3,7 @@
 #include "HighLightVisitor.h"
 
 #include "FlowDirectionHandler.h"
+#include "TrackPipeHandler.h"
 COSGObject::COSGObject(HWND hWnd)
 {
 	n_hWnd = hWnd;
@@ -12,6 +13,7 @@ COSGObject::COSGObject(HWND hWnd)
 	isVsectionStart=false;
 	pStatisticDlg =  new StatisticDialog();
 	pFlowDirectionDlg = new FlowDirectionDialog();
+	pTrackPipeDlg = new CTrackPipeDialog();
 	pipes=new map<string ,string>;
 	pipes->insert(pair<string,string>("ysgline_new","ysgpoint_new"));
 }
@@ -101,7 +103,11 @@ void COSGObject::InitCameraConfig()//初始化相机
 	pFlowDirectionDlg->Create(IDD_LIUXIANG);
 	mViewer->addEventHandler(new FlowDirectionHandler(&pFlowDirectionDlg,mViewer));
 	//dc end	流向分析---------------------------------------
-
+	
+	//dc begin	流向分析---------------------------------------
+	pTrackPipeDlg->Create(IDD_ZHUIZONG);
+	mViewer->addEventHandler(new TrackPipeHandler(&pTrackPipeDlg,mViewer));
+	//dc end	流向分析---------------------------------------
 
 	mViewer->setCamera(camera);
 	//mViewer->setCameraManipulator(new osgGA::TrackballManipulator);
@@ -243,6 +249,11 @@ void COSGObject::initStatisticDlg()
 void COSGObject::initFlowDirectionDlg()
 {
 	pFlowDirectionDlg->ShowWindow(SW_NORMAL);
+}
+
+void COSGObject::initTrackPipeDlg()
+{
+	pTrackPipeDlg->ShowWindow(SW_NORMAL);
 }
 
 void COSGObject::pipeView(void)

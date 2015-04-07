@@ -16,6 +16,7 @@
 #include "AddClick.h"
 #include "CSection.h"
 #include "FlowDirectionDialog.h"
+#include "TrackPipeDialog.h"
 #include "VSection.h"
 
 using namespace osgEarth;
@@ -60,17 +61,21 @@ public:
 
 	//---end zongduanfenxi
 
-	//dc--管线统计-----------------------------------------------------------------
+	
 public:
+	//dc--管线统计-----------------------------------------------------------------
 	bool ifDoStatistic;
 	StatisticDialog* pStatisticDlg;
 	void initStatisticDlg();
 	osg::Group* pRectNodeGroup;
-	//dc----------------------------------------------------------------------------
 
 	//dc--流向分析------------------------------------------------------------------
 	FlowDirectionDialog* pFlowDirectionDlg;
 	void initFlowDirectionDlg();
+	
+	//dc--追踪分析------------------------------------------------------------------
+	CTrackPipeDialog* pTrackPipeDlg;
+	void initTrackPipeDlg();
 	//dc----------------------------------------------------------------------------
 
 	//------wangsongwei  加上模型层控制

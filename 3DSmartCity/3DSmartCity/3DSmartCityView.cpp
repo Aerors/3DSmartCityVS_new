@@ -49,6 +49,7 @@ IMPLEMENT_DYNCREATE(CMy3DSmartCityView, CView)
 		ON_COMMAND(ID_LIUXIANGFENXION, &CMy3DSmartCityView::OnLiuxiangfenxion)
 		ON_COMMAND(ID_ZONGDUANFENXION, &CMy3DSmartCityView::OnZongduanfenxion)
 		ON_WM_CLOSE()
+		ON_COMMAND(ID_ZHUIZONGFENXION, &CMy3DSmartCityView::OnZhuizongfenxion)
 	END_MESSAGE_MAP()
 
 	// CMy3DSmartCityView 构造/析构
@@ -233,6 +234,11 @@ IMPLEMENT_DYNCREATE(CMy3DSmartCityView, CView)
 		mOSG->initFlowDirectionDlg();
 	}
 
+	void CMy3DSmartCityView::OnZhuizongfenxion()
+	{
+		mOSG->initTrackPipeDlg();
+	}
+
 	void CMy3DSmartCityView::OnPipeOn()
 	{
 		// TODO: 在此添加命令处理程序代码
@@ -300,3 +306,6 @@ void CMy3DSmartCityView::OnClose()
 
 	CView::OnClose();
 }
+
+
+
