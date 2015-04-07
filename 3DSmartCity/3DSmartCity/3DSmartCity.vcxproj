@@ -251,6 +251,7 @@
     <ClInclude Include="FlowDirectionDialog.h" />
     <ClInclude Include="FlowDirectionHandler.h" />
     <ClInclude Include="HeadFiles.h" />
+    <ClInclude Include="HighLight.h" />
     <ClInclude Include="HighLightVisitor.h" />
     <ClInclude Include="MainFrm.h" />
     <ClInclude Include="makeSql.h" />
@@ -263,6 +264,8 @@
     <ClInclude Include="StatisticDialog.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
+    <ClInclude Include="VSection.h" />
+    <ClInclude Include="VSectionDlg.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="3DSmartCity.cpp" />
@@ -299,6 +302,7 @@
     <ClCompile Include="DBConnection.cpp" />
     <ClCompile Include="FlowDirectionDialog.cpp" />
     <ClCompile Include="FlowDirectionHandler.cpp" />
+    <ClCompile Include="HighLight.cpp" />
     <ClCompile Include="HighLightVisitor.cpp" />
     <ClCompile Include="MainFrm.cpp" />
     <ClCompile Include="makeSql.cpp" />
@@ -314,6 +318,8 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
+    <ClCompile Include="VSection.cpp" />
+    <ClCompile Include="VSectionDlg.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="3DSmartCity.rc" />

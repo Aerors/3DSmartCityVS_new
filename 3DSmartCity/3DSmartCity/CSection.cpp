@@ -11,7 +11,7 @@ CCSection::CCSection(MapNode* mapNode,osgViewer::Viewer* viewer,osg::Group * lin
 	this->isDrawLineStart=isDrawLineStart;
 	this->sectionDlg=new CCSectionDlg;
 	sectionDlg->Create(IDD_CSECTION);	
-	DBConnection *DBclass=new DBConnection();
+	DBclass=new DBConnection();
 	DBclass->ConnectToDB(conn,"localhost","5432","HRBPipe","postgres","123456");
 }
 
@@ -137,11 +137,12 @@ void CCSection::findPipes(GeoPoint startPoint,GeoPoint endPoint)
 	char *startDepth, *endDepth, *startElevation,*endElevation;
 	double sdepth,edepth,sele,eele;
 	double ldepth,lele,gele;//start depth, line elevation, ground elevation;
+	int field_num=PQnfields(res);
 	for (int i=0;i<(*row_num);i++)
 	{
 		strTmp=PQgetvalue(res,i,0);
 		sectionDlg->listPro.InsertItem(i,strTmp);
-		for (int j=1;j<9;j++)
+		for (int j=1;j<field_num;j++)
 		{
 			strTmp=PQgetvalue(res,i,j);
 			if (j>2 && j<7)
@@ -171,14 +172,7 @@ void CCSection::findPipes(GeoPoint startPoint,GeoPoint endPoint)
 		pPointSeriel->AddPoint(i,lele);
 
 	}
-
-	double x[10], y[10];
-	for (int i=0; i<10; i++)
-	{
-		x[i] = i;
-		y[i] = sin(float(i))*10;
-	}
-
+	
 	sectionDlg->mChartCtrl.GetLegend()->SetVisible(true);
 	sectionDlg->mChartCtrl.EnableRefresh(true);
 	sectionDlg->listPro.SetRedraw(true);

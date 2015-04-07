@@ -9,7 +9,7 @@ COSGObject::COSGObject(HWND hWnd)
 
 	isDrawLineStart=false;
 	closeWindows=false;
-
+	isVsectionStart=false;
 	pStatisticDlg =  new StatisticDialog();
 	pFlowDirectionDlg = new FlowDirectionDialog();
 	pipes=new map<string ,string>;
@@ -85,6 +85,10 @@ void COSGObject::InitCameraConfig()//初始化相机
 	mRoot->addChild(mCSLine);
 	mViewer->addEventHandler(new CCSection(mapNode, mViewer,mCSLine,& isDrawLineStart));
 	//end	横断面分析
+
+	//begin 纵断面分析  songweiwang;
+	mViewer->addEventHandler(new VSection(mapNode, mViewer,&isVsectionStart));
+	//end	纵断面分析  songweiwang;
 
 	//dc begin	管线统计---------------------------------------
 	pStatisticDlg->Create(IDD_TONGJI);

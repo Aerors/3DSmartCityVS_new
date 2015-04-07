@@ -238,6 +238,15 @@
     <ClInclude Include="ChartCtrl\PointsOrdering.h">
       <Filter>ChartCtrl</Filter>
     </ClInclude>
+    <ClInclude Include="VSection.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="VSectionDlg.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="HighLight.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="3DSmartCity.cpp">
@@ -371,6 +380,15 @@
     </ClCompile>
     <ClCompile Include="ChartCtrl\ChartXYSerie.cpp">
       <Filter>ChartCtrl</Filter>
+    </ClCompile>
+    <ClCompile Include="VSection.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="VSectionDlg.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="HighLight.cpp">
+      <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

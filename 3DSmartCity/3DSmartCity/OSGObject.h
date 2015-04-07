@@ -16,6 +16,7 @@
 #include "AddClick.h"
 #include "CSection.h"
 #include "FlowDirectionDialog.h"
+#include "VSection.h"
 
 using namespace osgEarth;
 class COSGObject
@@ -49,9 +50,15 @@ public:
 	void addFlag();	
 	osg::ref_ptr<osg::Group> mLabels;
 
-	//画线启用标志
+	//画线启用标志 横断面分析;--songweiwang
 	bool isDrawLineStart;
 	osg::ref_ptr<osg::Group> mCSLine;
+	//---end hengduanfenxi
+
+	//纵断面分析---songweiwang;	
+	bool isVsectionStart;	
+
+	//---end zongduanfenxi
 
 	//dc--管线统计-----------------------------------------------------------------
 public:
