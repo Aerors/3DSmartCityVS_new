@@ -2,13 +2,24 @@
 #include "HighLightVisitor.h"
 #include <osg/Geometry>
 
-HighLightVisitor::HighLightVisitor(std::string str,bool makeithighlight)
+HighLightVisitor::HighLightVisitor(std::string str,bool makeithighlight,osg::Vec4f color)
 	:osg::NodeVisitor(TRAVERSE_ALL_CHILDREN)
 {
 	m_bzm = str;
 	highlightFlag = makeithighlight;
+	this->color = color;
+	this->hasEndFlag = false;
 }
 
+HighLightVisitor::HighLightVisitor(std::string str,bool makeithighlight,osg::Vec4f colorBegin,osg::Vec4f colorEnd)
+	:osg::NodeVisitor(TRAVERSE_ALL_CHILDREN)
+{
+	m_bzm = str;
+	highlightFlag = makeithighlight;
+	this->color = colorBegin;
+	this->colorEnd = colorEnd;
+	this->hasEndFlag = true;
+}
 
 HighLightVisitor::~HighLightVisitor(void)
 {
@@ -29,14 +40,32 @@ void HighLightVisitor::apply(osg::Geode& node)
 			if(tmpGeom)
 			{
 				osg::Vec4Array* tmpColorArray = dynamic_cast<osg::Vec4Array*>(tmpGeom->getColorArray());
-				if(tmpColorArray)
+				if(!this->hasEndFlag)
 				{
-					osg::Vec4Array::iterator iter = tmpColorArray->begin();
-					for(iter; iter!=tmpColorArray->end(); iter++)
+					if(tmpColorArray)
 					{
-						iter->set(1.0,1.0,0.0,0.5);
+						osg::Vec4Array::iterator iter = tmpColorArray->begin();
+						for(iter; iter!=tmpColorArray->end(); iter++)
+						{
+							iter->set(color.r(),color.g(),color.b(),color.a());
+						}
+					}
+				}else
+				{
+					if(tmpColorArray)
+					{
+						/*osg::Vec4Array::iterator iter = tmpColorArray->begin();
+						for(iter; iter!=tmpColorArray->end(); iter++)
+						{
+							iter->set(color.r(),color.g(),color.b(),color.a());
+						}*/
+						tmpColorArray->erase(tmpColorArray->begin(),tmpColorArray->end());
+						tmpColorArray->push_back(color);
+						tmpColorArray->push_back(colorEnd);
 					}
 				}
+				
+				
 			}
 		}else
 		{

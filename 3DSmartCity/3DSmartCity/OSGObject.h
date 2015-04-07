@@ -14,7 +14,7 @@
 #include "AddPipe.h"
 #include "AddFlagDlg.h"
 #include "AddClick.h"
-#include "CSection.h"
+
 #include "FlowDirectionDialog.h"
 
 using namespace osgEarth;

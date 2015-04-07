@@ -1,6 +1,7 @@
 #pragma once
 #include "afxcmn.h"
 #include "resource.h"
+#include "afxcolorbutton.h"
 // FlowDirectionDialog ¶Ô»°¿ò
 
 class FlowDirectionDialog : public CDialogEx
@@ -20,4 +21,6 @@ protected:
 	DECLARE_MESSAGE_MAP()
 public:
 	CListCtrl m_list;
+	CMFCColorButton mColorPicker;
+//	CMFCColorButton mEndColorPicker;
 };

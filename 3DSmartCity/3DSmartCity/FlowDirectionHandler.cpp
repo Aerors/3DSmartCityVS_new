@@ -3,6 +3,8 @@
 #include "DBConnection.h"
 #include "HighLightVisitor.h"
 #include "makeSql.h"
+#include "HighLightVisitor.h"
+#include "ColorGradient.h"
 
 FlowDirectionHandler::FlowDirectionHandler(void)
 {
@@ -28,7 +30,7 @@ bool FlowDirectionHandler::handle(const osgGA::GUIEventAdapter& ea,osgGA::GUIAct
 			{
 				osg::Vec3d m_TempPoint1;
 				//const osgEarth::SpatialReference* m_pGeoSRS = mapNode->getTerrain()->getSRS();
-			
+
 				Pick(ea.getX(),ea.getY());
 			}
 		}
@@ -63,49 +65,93 @@ void FlowDirectionHandler::Pick(float x,float y )
 							osg::Geode* tmp = dynamic_cast<osg::Geode*>(nd);
 							if(tmp)
 							{
+								osg::Vec4f color,colorEnd;
 								osg::Geometry* tmpGeom = dynamic_cast<osg::Geometry*>(tmp->getDrawable(0));
 								if(tmpGeom)
 								{
 									osg::Vec4Array* tmpColorArray = dynamic_cast<osg::Vec4Array*>(tmpGeom->getColorArray());
 									if(tmpColorArray)
 									{
+										COLORREF cref = (*ppFlowDlg)->mColorPicker.GetColor();
+										BYTE r = GetRValue(cref);
+										BYTE g = GetGValue(cref);
+										BYTE b = GetBValue(cref);
+										color.set(r/255,g/255,b/255,1);
+
 										osg::Vec4Array::iterator iter = tmpColorArray->begin();
 										for(iter; iter!=tmpColorArray->end(); iter++)
 										{
-											iter->set(1.0,0.0,0.0,0.5);
+											iter->set(r/255,g/255,b/255,0.5);
+											
 										}
 									}
 								}
 
 								DBConnection reader;
-								makeSql ms("ysgline_new");
+								makeSql ms;
 								reader.ConnectToDB("localhost","5432","HRBPipe","postgres","123456");
 								string sql = ms.flowDirectionSql(nd->getName());
 								PGresult* res = reader.ExecSQL(const_cast<char*>(sql.c_str()));
-
+								
 								int field_num=PQnfields(res);
 								int tuple_num=PQntuples(res);
+								float* fbzms = new float[tuple_num];
 
-								for(int j=0;j<field_num;++j)
+								//初始化list
 								{
-									(*ppFlowDlg)->m_list.InsertColumn(j,"sl", LVCFMT_LEFT, 80);
-								}
-								
-								for(int j=0;j<tuple_num;++j)
-								{
-									char* s = PQgetvalue(res,j,0);
-									int nRow = (*ppFlowDlg)->m_list.InsertItem(j, s);//插入行
-
-									for(int k=1;k<field_num;++k)
+									(*ppFlowDlg)->m_list.DeleteAllItems();
+									for(int j=0;j<field_num;++j)
 									{
-										char* t = PQgetvalue(res,j,k);
-										(*ppFlowDlg)->m_list.SetItemText(j, k, t);//设置数据
+										(*ppFlowDlg)->m_list.InsertColumn(j,PQfname(res,j), LVCFMT_LEFT, 80);
 									}
-									
 
-									/*bzms.push_back(std::string(t));*/
+									for(int j=0;j<tuple_num;++j)
+									{
+										char* s = PQgetvalue(res,j,0);
+										int nRow = (*ppFlowDlg)->m_list.InsertItem(j, s);//插入行
+
+										for(int k=1;k<field_num;++k)
+										{
+											char* t = PQgetvalue(res,j,k);
+											(*ppFlowDlg)->m_list.SetItemText(j, k, t);//设置数据
+
+											if(1==k)
+											{
+												char* s = PQfname(res,k);
+												//ASSERT(PQfname(res,k) == "标识码");
+												fbzms[j] = atof(t);//查询到的标识码
+											}
+
+										}
+									}
 								}
 
+
+								//绘制整条流向管线
+								{
+									for(std::vector<std::string>::iterator it=oldBzms.begin();it!=oldBzms.end();it++)
+									{
+										HighLightVisitor hl(*it,false);
+										mViewer->getSceneData()->accept(hl);
+									}
+									oldBzms.erase(oldBzms.begin(),oldBzms.end());
+									ASSERT(oldBzms.empty());
+
+									/*ColorGradient g(color,colorEnd,tuple_num);*/
+									ColorGradient g(color,tuple_num);
+									osg::Vec4f* colors = g.getColorArray();
+									for(int i=0;i<tuple_num;i++)
+									{
+										string s;
+										ostringstream buf;
+										buf<<"ysgline_new "<<fbzms[i];
+										s = buf.str();
+										HighLightVisitor hl(s,true,colors[i]);
+										mViewer->getSceneData()->accept(hl);
+
+										oldBzms.push_back(s);
+									}
+								}
 								tmpGeom->dirtyDisplayList();
 								
 							}

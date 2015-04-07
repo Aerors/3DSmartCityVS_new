@@ -47,6 +47,7 @@ BEGIN_MESSAGE_MAP(CMy3DSmartCityView, CView)
 	ON_COMMAND(ID_BIAOHUION, &CMy3DSmartCityView::OnBiaohuion)
 	ON_COMMAND(ID_HENGDUANFENXION, &CMy3DSmartCityView::OnHengduanfenxion)
 	ON_COMMAND(ID_LIUXIANGFENXION, &CMy3DSmartCityView::OnLiuxiangfenxion)
+	ON_WM_CLOSE()
 END_MESSAGE_MAP()
 
 // CMy3DSmartCityView 构造/析构
@@ -213,6 +214,8 @@ void CMy3DSmartCityView::OnDestroy()
 	CView::OnDestroy();
 	if(mOSG!=0) delete mOSG;
 	WaitForSingleObject(mThreadHandle,1000);
+	CloseHandle(mThreadHandle);
+	//_endthreadex(mThreadHandle);
 
 	// TODO: 在此处添加消息处理程序代码
 }
@@ -267,7 +270,6 @@ void CMy3DSmartCityView::OnBiaohuion()
 
 void CMy3DSmartCityView::OnHengduanfenxion()
 {
-
 	if(IDYES==MessageBoxA(_T("是否画线选取管线?"),_T("管线选取"),MB_ICONQUESTION+MB_YESNO))  
 	{  
 		mOSG->isDrawLineStart=true;
@@ -280,3 +282,11 @@ void CMy3DSmartCityView::OnHengduanfenxion()
 }
 
 
+
+
+void CMy3DSmartCityView::OnClose()
+{
+	
+
+	CView::OnClose();
+}
