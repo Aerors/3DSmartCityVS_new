@@ -250,6 +250,15 @@
     <ClInclude Include="ColorGradient.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="DisDlg.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="EventHandlerDistance.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="EventRect.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="3DSmartCity.cpp">
@@ -394,6 +403,15 @@
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="ColorGradient.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="DisDlg.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="EventHandlerDistance.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="EventRect.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>

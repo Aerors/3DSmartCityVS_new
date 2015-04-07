@@ -17,7 +17,9 @@
 #include "CSection.h"
 #include "FlowDirectionDialog.h"
 #include "VSection.h"
-
+#include "EventHandlerDistance.h"
+#include "DisDlg.h"
+#include "EventRect.h"
 using namespace osgEarth;
 class COSGObject
 {
@@ -91,6 +93,16 @@ private:
 public:
 	void pipeView(void);
 	void buildingView(void);
+
+	//Á¿Ëã
+	CDisDlg *disdlg;
+	void adddis();
+public:
+	osg::ref_ptr<CEventHandlerDistance> eh;
+	osg::ref_ptr<CEventRect> er;
+	void isTestju(bool isTestju);
+	void isTestAera(bool isTestAera);
+
 
 };
 
