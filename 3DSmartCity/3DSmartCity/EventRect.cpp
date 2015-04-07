@@ -255,49 +255,62 @@ bool CEventRect::handle(const osgGA::GUIEventAdapter& ea,osgGA::GUIActionAdapter
 						
 						jilu++;
 
+						//����
+
+
+
+
+						//state->setMode(GL_BLEND,osg::StateAttribute::ON);  
+						//state->setMode(GL_DEPTH_TEST,osg::StateAttribute::OFF);  
+						//state->setMode(GL_LIGHTING, osg::StateAttribute::OFF|osg::StateAttribute::PROTECTED );  
+						////������Ⱦ���ȼ�  
+						//state->setRenderBinDetails(101, "RenderBin");  
+						//osg::CullFace* cf = new osg::CullFace;  
+						//state->setAttributeAndModes(cf,osg::StateAttribute::OFF);  
+
+						//osg::ref_ptr<osg::Depth> depth = new osg::Depth;  
+						//depth->setFunction(osg::Depth::ALWAYS);  
+						//depth->setRange(0.0,0.0);     
+						//state->setAttributeAndModes(depth.get(),osg::StateAttribute::ON ); 
+
+
+						//geom->setStateSet(state);
+						//geom->setVertexArray(vertexrect);
+
+						////��ɫ
+						//osg::Vec4Array* colors = new osg::Vec4Array;  
+						//osg::Vec4 color(1.0,1.0,0.0,1.0);  
+						//colors->push_back(color);  
+						//geom->setColorArray(colors);  
+						//geom->setColorBinding(osg::Geometry::BIND_PER_PRIMITIVE_SET); 
+						//
+						////vertexrect->insert(vertexrect->end(),vertexrect->begin(),vertexrect->end());
+						//geom->addPrimitiveSet(new osg::DrawArrays(GL_POLYGON,0,vertexrect->size()));
+
+						////����
+						//osg::ref_ptr<osg::Vec3Array> normals = new osg::Vec3Array;  
+						//geom->setNormalArray(normals.get());
+						//geom->setNormalBinding(osg::Geometry::BIND_PER_PRIMITIVE_SET);  
+						//osg::Vec3 normal = osg::Z_AXIS;  
+						//normals->push_back(normal);
+
+
+						//osg::ref_ptr<osgUtil::Tessellator> tes = new osgUtil::Tessellator();  
+						//tes->setBoundaryOnly(false);  
+						//tes->setWindingType(osgUtil::Tessellator::TESS_WINDING_ODD); //���û��ƹ��� 
+						//tes->setTessellationType(osgUtil::Tessellator::TESS_TYPE_DRAWABLE);  
+						//tes->retessellatePolygons(*geom);//ʹ�÷ָ� 
+
+						//polygon->addDrawable(geom);
+						//viewer->getSceneData()->asGroup()->addChild(polygon);
+										
+						//�������
+
 				}
 				}
 		}
 		return true;
 	}
-	else
-	{
-		if(viewer->getSceneData()->asGroup()->containsNode(polygon))
-		{
-			viewer->getSceneData()->asGroup()->removeChild(polygon);
-			polygon=0;
-			polygon=new osg::Geode;
-			geom=0;
-			geom=new osg::Geometry;
-
-
-		}
-		if(viewer->getSceneData()->asGroup()->containsNode(xiaoqiu))
-		{
-			viewer->getSceneData()->asGroup()->removeChild(xiaoqiu);
-			xiaoqiu=0;
-			xiaoqiu=new osg::Geode;
-			geom=0;
-			geom=new osg::Geometry;
-
-		}	
-
-		for(int i=0;i<=jilu+20;i++)
-		{									
-			viewer->getSceneData()->asGroup()->removeChild(LineRoot);
-			if(viewer->getSceneData()->asGroup()->containsNode(LineRoot)==false)
-			{
-				polygon=0;
-				polygon=new osg::Geode;
-				LineRoot=0;
-				LineRoot=new osg::Group;
-				RectLine=0;
-				RectLine=new osg::Geode;
-			}
-			jilu--;
-
-		}
-}
 	return false;
 }
 
