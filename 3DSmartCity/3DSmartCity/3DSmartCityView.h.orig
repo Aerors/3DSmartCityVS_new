@@ -78,8 +78,11 @@ public:
 	afx_msg void OnBiaohuion();
 	afx_msg void OnHengduanfenxion();
 	afx_msg void OnLiuxiangfenxion();
+<<<<<<< HEAD
 	afx_msg void OnZongduanfenxion();
+=======
 	afx_msg void OnClose();
+>>>>>>> origin/master
 };
 
 #ifndef _DEBUG  // 3DSmartCityView.cpp 中的调试版本

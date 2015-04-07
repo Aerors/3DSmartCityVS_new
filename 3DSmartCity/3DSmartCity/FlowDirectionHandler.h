@@ -19,6 +19,7 @@ public:
 private:
 	FlowDirectionDialog** ppFlowDlg;
 	osgViewer::Viewer* mViewer;
+	std::vector<std::string> oldBzms;
 
 	void Pick(float x,float y );
 };

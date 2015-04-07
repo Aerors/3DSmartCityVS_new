@@ -31,6 +31,7 @@
 
 IMPLEMENT_DYNCREATE(CMy3DSmartCityView, CView)
 
+<<<<<<< HEAD
 	BEGIN_MESSAGE_MAP(CMy3DSmartCityView, CView)
 		// 标准打印命令
 		ON_COMMAND(ID_FILE_PRINT, &CView::OnFilePrint)
@@ -48,7 +49,6 @@ IMPLEMENT_DYNCREATE(CMy3DSmartCityView, CView)
 		ON_COMMAND(ID_HENGDUANFENXION, &CMy3DSmartCityView::OnHengduanfenxion)
 		ON_COMMAND(ID_LIUXIANGFENXION, &CMy3DSmartCityView::OnLiuxiangfenxion)
 		ON_COMMAND(ID_ZONGDUANFENXION, &CMy3DSmartCityView::OnZongduanfenxion)
-		ON_WM_CLOSE()
 	END_MESSAGE_MAP()
 
 	// CMy3DSmartCityView 构造/析构
@@ -93,6 +93,69 @@ IMPLEMENT_DYNCREATE(CMy3DSmartCityView, CView)
 
 	void CMy3DSmartCityView::OnFilePrintPreview()
 	{
+=======
+BEGIN_MESSAGE_MAP(CMy3DSmartCityView, CView)
+	// 标准打印命令
+	ON_COMMAND(ID_FILE_PRINT, &CView::OnFilePrint)
+	ON_COMMAND(ID_FILE_PRINT_DIRECT, &CView::OnFilePrint)
+	ON_COMMAND(ID_FILE_PRINT_PREVIEW, &CMy3DSmartCityView::OnFilePrintPreview)
+	ON_WM_CONTEXTMENU()
+	ON_WM_RBUTTONUP()
+	ON_WM_CREATE()
+	ON_WM_ERASEBKGND()
+	ON_WM_DESTROY()
+	ON_COMMAND(ID_GUANXIANTONGJION, &CMy3DSmartCityView::OnGuanxiantongjion)
+	ON_COMMAND(ID_CHANGJINGON, &CMy3DSmartCityView::OnPipeOn)
+	ON_COMMAND(32791, &CMy3DSmartCityView::OnBuildingOn)
+	ON_COMMAND(ID_BIAOHUION, &CMy3DSmartCityView::OnBiaohuion)
+	ON_COMMAND(ID_HENGDUANFENXION, &CMy3DSmartCityView::OnHengduanfenxion)
+	ON_COMMAND(ID_LIUXIANGFENXION, &CMy3DSmartCityView::OnLiuxiangfenxion)
+	ON_WM_CLOSE()
+END_MESSAGE_MAP()
+
+// CMy3DSmartCityView 构造/析构
+
+CMy3DSmartCityView::CMy3DSmartCityView()
+{
+	//初始化
+	mOSG=0;
+	mThreadHandle=0;
+	isPipe=false;
+	isFirst=true;
+
+}
+
+CMy3DSmartCityView::~CMy3DSmartCityView()
+{
+}
+
+BOOL CMy3DSmartCityView::PreCreateWindow(CREATESTRUCT& cs)
+{
+	// TODO: 在此处通过修改
+	//  CREATESTRUCT cs 来修改窗口类或样式
+
+	return CView::PreCreateWindow(cs);
+}
+
+// CMy3DSmartCityView 绘制
+
+void CMy3DSmartCityView::OnDraw(CDC* /*pDC*/)
+{
+	CMy3DSmartCityDoc* pDoc = GetDocument();
+	ASSERT_VALID(pDoc);
+	if (!pDoc)
+		return;
+
+	
+}
+
+
+// CMy3DSmartCityView 打印
+
+
+void CMy3DSmartCityView::OnFilePrintPreview()
+{
+>>>>>>> origin/master
 #ifndef SHARED_HANDLERS
 		AFXPrintPreview(this);
 #endif
@@ -209,14 +272,46 @@ IMPLEMENT_DYNCREATE(CMy3DSmartCityView, CView)
 			tree.SetCheck(hChild);
 		}
 	}
+<<<<<<< HEAD
 
 	void CMy3DSmartCityView::OnDestroy()
+=======
+}
+
+void CMy3DSmartCityView::OnDestroy()
+{
+	CView::OnDestroy();
+	if(mOSG!=0) delete mOSG;
+	WaitForSingleObject(mThreadHandle,1000);
+	CloseHandle(mThreadHandle);
+	//_endthreadex(mThreadHandle);
+
+	// TODO: 在此处添加消息处理程序代码
+}
+
+
+void CMy3DSmartCityView::OnGuanxiantongjion()
+{
+	// TODO: 在此添加命令处理程序代码
+	mOSG->initStatisticDlg();
+}
+
+void CMy3DSmartCityView::OnLiuxiangfenxion()
+{
+	mOSG->initFlowDirectionDlg();
+}
+
+void CMy3DSmartCityView::OnPipeOn()
+{
+	// TODO: 在此添加命令处理程序代码
+	theApp.NeedModify=TRUE;
+	while(!theApp.CanModify)Sleep(1);
+	if (isFirst||!isPipe)
+>>>>>>> origin/master
 	{
 		CView::OnDestroy();
 		if(mOSG!=0) delete mOSG;
 		WaitForSingleObject(mThreadHandle,1000);
-	CloseHandle(mThreadHandle);
-	//_endthreadex(mThreadHandle);
 
 		// TODO: 在此处添加消息处理程序代码
 	}
@@ -248,6 +343,7 @@ IMPLEMENT_DYNCREATE(CMy3DSmartCityView, CView)
 	}
 
 
+<<<<<<< HEAD
 	void CMy3DSmartCityView::OnBuildingOn()
 	{
 		// TODO: 在此添加命令处理程序代码
@@ -264,11 +360,7 @@ IMPLEMENT_DYNCREATE(CMy3DSmartCityView, CView)
 
 
 	void CMy3DSmartCityView::OnBiaohuion()
-	{
-		mOSG->addFlag();
-	}
-
-
+=======
 void CMy3DSmartCityView::OnHengduanfenxion()
 {
 	if(IDYES==MessageBoxA(_T("是否画线选取管线?"),_T("管线选取"),MB_ICONQUESTION+MB_YESNO))  
@@ -276,22 +368,30 @@ void CMy3DSmartCityView::OnHengduanfenxion()
 		mOSG->isDrawLineStart=true;
 	}  
 	else
+>>>>>>> origin/master
 	{
-		mOSG->isDrawLineStart=false;
+		mOSG->addFlag();
 	}
 
-}	
 
+	void CMy3DSmartCityView::OnHengduanfenxion()
+	{
+
+		if(IDYES==MessageBoxA(_T("是否画线选取管线?"),_T("管线选取"),MB_ICONQUESTION+MB_YESNO))  
+		{  
+			mOSG->isDrawLineStart=true;
+		}
+
+	}
+
+
+<<<<<<< HEAD
 	void CMy3DSmartCityView::OnZongduanfenxion()
 	{
 		MessageBoxA(_T("请双击选取管线"),_T("管线选取"));
 		mOSG->isVsectionStart=true;
-	}	
-
-
-
-
-
+	}
+=======
 
 
 void CMy3DSmartCityView::OnClose()
@@ -300,3 +400,4 @@ void CMy3DSmartCityView::OnClose()
 
 	CView::OnClose();
 }
+>>>>>>> origin/master

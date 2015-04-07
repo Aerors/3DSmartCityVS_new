@@ -44,9 +44,10 @@ string makeSql::makePolySql(double topleftlat,double topleftlon,double bottomrig
 string makeSql::flowDirectionSql(string bzm)
 {
 	//flow_direction('ysgline_new','28028')
-	ASSERT(bzm.find(this->mTableName)==0);
+	
 	int x = bzm.find(' ');
+	string tbname = bzm.substr(0,x-0);
 	string b = bzm.substr(x+1);
-	string sql = "select flow_direction('" + mTableName + "','" + b + "')";
+	string sql = "select * from flow_direction('" + tbname + "','" + b + "')";
 	return sql;
 }

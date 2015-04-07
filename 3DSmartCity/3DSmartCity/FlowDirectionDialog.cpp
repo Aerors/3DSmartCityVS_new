@@ -25,6 +25,7 @@ void FlowDirectionDialog::DoDataExchange(CDataExchange* pDX)
 {
 	CDialogEx::DoDataExchange(pDX);
 	DDX_Control(pDX, IDC_FLOWDIRLIST, m_list);
+	DDX_Control(pDX, IDC_MFCCOLORBUTTON1, mColorPicker);
 }
 
 
