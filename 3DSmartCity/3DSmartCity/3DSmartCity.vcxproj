@@ -245,6 +245,7 @@
     <ClInclude Include="ChartCtrl\ChartTitle.h" />
     <ClInclude Include="ChartCtrl\ChartXYSerie.h" />
     <ClInclude Include="ChartCtrl\PointsOrdering.h" />
+    <ClInclude Include="ColorGradient.h" />
     <ClInclude Include="CSection.h" />
     <ClInclude Include="CSectionDlg.h" />
     <ClInclude Include="DBConnection.h" />
@@ -297,6 +298,7 @@
     <ClCompile Include="ChartCtrl\ChartSurfaceSerie.cpp" />
     <ClCompile Include="ChartCtrl\ChartTitle.cpp" />
     <ClCompile Include="ChartCtrl\ChartXYSerie.cpp" />
+    <ClCompile Include="ColorGradient.cpp" />
     <ClCompile Include="CSection.cpp" />
     <ClCompile Include="CSectionDlg.cpp" />
     <ClCompile Include="DBConnection.cpp" />

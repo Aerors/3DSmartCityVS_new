@@ -247,6 +247,9 @@
     <ClInclude Include="HighLight.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="ColorGradient.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="3DSmartCity.cpp">
@@ -388,6 +391,9 @@
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="HighLight.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="ColorGradient.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>
