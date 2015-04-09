@@ -23,7 +23,6 @@ public:
 	string bzm1,bzm2;
 	bool isFirstTime;
 	bool *isStart;
-
 	osgUtil::LineSegmentIntersector::Intersections intersection;
 
 	MapNode *mapNode;
