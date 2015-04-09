@@ -111,7 +111,16 @@ void COSGObject::InitCameraConfig()//初始化相机
 	mViewer->getCamera()->setNearFarRatio(0.000003f);
 
 	mViewer->addEventHandler(new osgGA::StateSetManipulator(mViewer->getCamera()->getOrCreateStateSet()));
+	//量算,距离
 
+	disdlg=new CDisDlg();
+	disdlg->Create(IDD_DisDlg);
+	disdlg->initDlg(mLabels,mapNode);
+	eh=new CEventHandlerDistance(mapNode,&disdlg,&closeWindows);
+	mViewer->addEventHandler(eh);
+	//面积
+	er=new CEventRect(mapNode,&disdlg);
+	mViewer->addEventHandler(er);
 }
 void COSGObject::PreFrameUpdate()
 {
@@ -329,5 +338,38 @@ void COSGObject::addFlag()
 			addlg->initDlg(mLabels,mapNode);
 		}		
 		addlg->ShowWindow(SW_NORMAL);
+	}	
+}
+//量算距离
+void COSGObject::isTestju(bool isTestju)
+{
+	theApp.NeedModify=TRUE;
+	while(!theApp.CanModify)Sleep(1);
+
+	eh->isStartTest(isTestju);
+	theApp.NeedModify=FALSE;
+
+}
+//量算面积
+void COSGObject::isTestAera(bool isTestAera)
+{
+	theApp.NeedModify=TRUE;
+	while(!theApp.CanModify)Sleep(1);
+	er->isStartTestArea(isTestAera);
+	theApp.NeedModify=FALSE;
+
+}
+//添加量算弹出对话框
+void COSGObject::adddis()
+{
+	if (!disdlg->IsWindowVisible())
+	{
+		if (disdlg==NULL)
+		{
+			disdlg=new CDisDlg();
+			disdlg->Create(IDD_DisDlg);
+			disdlg->initDlg(mLabels,mapNode);			
+		}		
+		disdlg->ShowWindow(SW_NORMAL);
 	}	
 }

@@ -68,13 +68,13 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
-    <IncludePath>D:\OSG\include;D:\osgEarth\osgearth-2.6\include;D:\Program Files\PostgreSQL\9.3\include;$(IncludePath)</IncludePath>
-    <LibraryPath>D:\Program Files\PostgreSQL\9.3\lib;D:\osgEarth\osgearth-2.6\lib;D:\OSG\lib;$(LibraryPath)</LibraryPath>
+    <IncludePath>D:\OSG\include;D:\osgEarth\osgearth-2.6\include;C:\Program Files\PostgreSQL\9.3\include;$(IncludePath)</IncludePath>
+    <LibraryPath>C:\Program Files\PostgreSQL\9.3\lib;D:\osgEarth\osgearth-2.6\lib;D:\OSG\lib;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
-    <IncludePath>D:\OSG\include;D:\osgEarth\osgearth-2.6\include;D:\Program Files\PostgreSQL\9.3\include;$(IncludePath)</IncludePath>
-    <LibraryPath>D:\Program Files\PostgreSQL\9.3\lib;D:\osgEarth\osgearth-2.6\lib;D:\OSG\lib;$(LibraryPath)</LibraryPath>
+    <IncludePath>D:\OSG\include;D:\osgEarth\osgearth-2.6\include;C:\Program Files\PostgreSQL\9.3\include;$(IncludePath)</IncludePath>
+    <LibraryPath>C:\Program Files\PostgreSQL\9.3\lib;D:\osgEarth\osgearth-2.6\lib;D:\OSG\lib;$(LibraryPath)</LibraryPath>
     <EmbedManifest>false</EmbedManifest>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -249,6 +249,9 @@
     <ClInclude Include="CSection.h" />
     <ClInclude Include="CSectionDlg.h" />
     <ClInclude Include="DBConnection.h" />
+    <ClInclude Include="DisDlg.h" />
+    <ClInclude Include="EventHandlerDistance.h" />
+    <ClInclude Include="EventRect.h" />
     <ClInclude Include="FlowDirectionDialog.h" />
     <ClInclude Include="FlowDirectionHandler.h" />
     <ClInclude Include="HeadFiles.h" />
@@ -302,6 +305,9 @@
     <ClCompile Include="CSection.cpp" />
     <ClCompile Include="CSectionDlg.cpp" />
     <ClCompile Include="DBConnection.cpp" />
+    <ClCompile Include="DisDlg.cpp" />
+    <ClCompile Include="EventHandlerDistance.cpp" />
+    <ClCompile Include="EventRect.cpp" />
     <ClCompile Include="FlowDirectionDialog.cpp" />
     <ClCompile Include="FlowDirectionHandler.cpp" />
     <ClCompile Include="HighLight.cpp" />

@@ -19,7 +19,7 @@
 #include "SmartCityTreeCtrl.h"
 #include "SmartCityTreeView.h"
 #include "3DSmartCity.h"
-
+#define  WM_UPDATEDATA_DIS WM_USER+112
 class CMy3DSmartCityView : public CView
 {
 protected: // 仅从序列化创建
@@ -40,6 +40,9 @@ public:
 public:
 	bool isPipe;
 	bool isFirst;
+	bool isTestju;
+	bool isTestAera;
+	double m_dis;
 
 // 重写
 public:
@@ -80,6 +83,10 @@ public:
 	afx_msg void OnLiuxiangfenxion();
 	afx_msg void OnZongduanfenxion();
 	afx_msg void OnClose();
+	afx_msg void OnCheliang();
+	afx_msg void OnUpdateCheliang(CCmdUI *pCmdUI);
+	afx_msg void OnCeliangarea();
+	afx_msg void OnUpdateCeliangarea(CCmdUI *pCmdUI);
 };
 
 #ifndef _DEBUG  // 3DSmartCityView.cpp 中的调试版本
