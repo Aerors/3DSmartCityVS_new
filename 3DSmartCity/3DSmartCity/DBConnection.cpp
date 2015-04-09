@@ -35,7 +35,6 @@ bool DBConnection::ConnectToDB(char *pghost,char *pgport,char *dbname,char *user
 	char * pgoptions, *pgtty;
 	pgoptions=NULL;
 	pgtty=NULL;
-
 	conn=PQsetdbLogin(pghost,pgport,pgoptions,pgtty,dbname,user,pwd);	
 	if (PQstatus(conn)==CONNECTION_BAD)
 	{

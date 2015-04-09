@@ -53,6 +53,8 @@ IMPLEMENT_DYNCREATE(CMy3DSmartCityView, CView)
 		ON_UPDATE_COMMAND_UI(ID_CHELIANG, &CMy3DSmartCityView::OnUpdateCheliang)
 		ON_COMMAND(ID_CELIANGAREA, &CMy3DSmartCityView::OnCeliangarea)
 		ON_UPDATE_COMMAND_UI(ID_CELIANGAREA, &CMy3DSmartCityView::OnUpdateCeliangarea)
+		ON_COMMAND(ID_ManYou, &CMy3DSmartCityView::OnManyou)
+		ON_UPDATE_COMMAND_UI(ID_ManYou, &CMy3DSmartCityView::OnUpdateManyou)
 	END_MESSAGE_MAP()
 
 	// CMy3DSmartCityView 构造/析构
@@ -66,6 +68,7 @@ IMPLEMENT_DYNCREATE(CMy3DSmartCityView, CView)
 		isFirst=true;
 		isTestju=false;
 		isTestAera=false;
+		isManyou=false;
 
 	}
 
@@ -363,4 +366,19 @@ void CMy3DSmartCityView::OnUpdateCeliangarea(CCmdUI *pCmdUI)
 	{
 		pCmdUI->Enable(false);
 	}
+}
+
+//漫游控制
+void CMy3DSmartCityView::OnManyou()
+{
+	// TODO: 在此添加命令处理程序代码
+	isManyou=!isManyou;
+	mOSG->isManyou(isManyou);
+}
+
+
+void CMy3DSmartCityView::OnUpdateManyou(CCmdUI *pCmdUI)
+{
+	// TODO: 在此添加命令更新用户界面处理程序代码
+	pCmdUI->SetCheck(isManyou);
 }

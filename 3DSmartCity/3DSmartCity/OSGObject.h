@@ -20,6 +20,7 @@
 #include "EventHandlerDistance.h"
 #include "DisDlg.h"
 #include "EventRect.h"
+#include "TravelManipulator.h"
 using namespace osgEarth;
 class COSGObject
 {
@@ -82,7 +83,7 @@ public:
 
 private:
 	HWND n_hWnd;//创建一个句柄
-	osgViewer::Viewer * mViewer;
+	osg::ref_ptr<osgViewer::Viewer> mViewer;
 	osg::ref_ptr<osg::Group> mRoot;
 
 	osg::ref_ptr<osgEarth::Util::EarthManipulator> em;
@@ -97,11 +98,17 @@ public:
 	//量算
 	CDisDlg *disdlg;
 	void adddis();
+
 public:
+
+	//量算
 	osg::ref_ptr<CEventHandlerDistance> eh;
 	osg::ref_ptr<CEventRect> er;
+	osg::ref_ptr<CTravelManipulator> tm;
 	void isTestju(bool isTestju);
 	void isTestAera(bool isTestAera);
+	//漫游
+	void isManyou(bool ismanyou);
 
 
 };

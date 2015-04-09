@@ -121,6 +121,12 @@ void COSGObject::InitCameraConfig()//初始化相机
 	//面积
 	er=new CEventRect(mapNode,&disdlg);
 	mViewer->addEventHandler(er);
+	//漫游
+	tm=new CTravelManipulator();
+	//tm->TravelToScene(mViewer);//将漫游器加入场景中
+	CTravelManipulator::TravelToScene(mViewer);
+
+	mViewer->addEventHandler(tm);
 }
 void COSGObject::PreFrameUpdate()
 {
@@ -358,6 +364,15 @@ void COSGObject::isTestAera(bool isTestAera)
 	er->isStartTestArea(isTestAera);
 	theApp.NeedModify=FALSE;
 
+}
+//漫游
+void COSGObject::isManyou(bool ismanyou)
+{
+	theApp.NeedModify=TRUE;
+	while(!theApp.CanModify)Sleep(1);
+
+	tm->isManyou(ismanyou);
+	theApp.NeedModify=FALSE;
 }
 //添加量算弹出对话框
 void COSGObject::adddis()

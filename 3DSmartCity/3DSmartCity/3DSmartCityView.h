@@ -42,6 +42,7 @@ public:
 	bool isFirst;
 	bool isTestju;
 	bool isTestAera;
+	bool isManyou;
 	double m_dis;
 
 // 重写
@@ -87,6 +88,8 @@ public:
 	afx_msg void OnUpdateCheliang(CCmdUI *pCmdUI);
 	afx_msg void OnCeliangarea();
 	afx_msg void OnUpdateCeliangarea(CCmdUI *pCmdUI);
+	afx_msg void OnManyou();
+	afx_msg void OnUpdateManyou(CCmdUI *pCmdUI);
 };
 
 #ifndef _DEBUG  // 3DSmartCityView.cpp 中的调试版本

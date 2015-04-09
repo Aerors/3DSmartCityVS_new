@@ -48,6 +48,7 @@ public:
 	osg::Vec3Array::iterator iter;
 	float GetAera(osg::ref_ptr<osg::Vec3Array> vetex);//计算不规则多边形面积
 	float LineInter(osg::Vec3d point1,osg::Vec3d point2);
+	
 	int jilu;
 	CDisDlg * *DisDlgShow;
 	osg::ref_ptr<osg::Group> mLabels3;

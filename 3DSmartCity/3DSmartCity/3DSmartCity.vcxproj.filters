@@ -259,6 +259,9 @@
     <ClInclude Include="EventRect.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="TravelManipulator.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="3DSmartCity.cpp">
@@ -412,6 +415,9 @@
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="EventRect.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="TravelManipulator.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>
