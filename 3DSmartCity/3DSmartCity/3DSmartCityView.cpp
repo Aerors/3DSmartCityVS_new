@@ -49,16 +49,15 @@ IMPLEMENT_DYNCREATE(CMy3DSmartCityView, CView)
 		ON_COMMAND(ID_LIUXIANGFENXION, &CMy3DSmartCityView::OnLiuxiangfenxion)
 		ON_COMMAND(ID_ZONGDUANFENXION, &CMy3DSmartCityView::OnZongduanfenxion)
 		ON_WM_CLOSE()
-<<<<<<< HEAD
 		ON_COMMAND(ID_ZHUIZONGFENXION, &CMy3DSmartCityView::OnZhuizongfenxion)
 		ON_COMMAND(ID_CHELIANG, &CMy3DSmartCityView::OnCheliang)
 		ON_UPDATE_COMMAND_UI(ID_CHELIANG, &CMy3DSmartCityView::OnUpdateCheliang)
 		ON_COMMAND(ID_CELIANGAREA, &CMy3DSmartCityView::OnCeliangarea)
 		ON_UPDATE_COMMAND_UI(ID_CELIANGAREA, &CMy3DSmartCityView::OnUpdateCeliangarea)
-=======
+
 		ON_COMMAND(ID_LIANTONGFENXION, &CMy3DSmartCityView::OnLiantongfenxion)
 		ON_COMMAND(ID_SHUIPINGJINGJUFENXION, &CMy3DSmartCityView::OnShuipingjingjufenxion)
->>>>>>> parent of 5503c20... Revert "è®¡ç®—æ°´å¹³å‡€è·..."
+
 	END_MESSAGE_MAP()
 
 	// CMy3DSmartCityView ¹¹Ôì/Îö¹¹
@@ -319,79 +318,68 @@ IMPLEMENT_DYNCREATE(CMy3DSmartCityView, CView)
 	}
 
 
-<<<<<<< HEAD
-void CMy3DSmartCityView::OnClose()
-{
-	
 
-	CView::OnClose();
-}
-
-
-void CMy3DSmartCityView::OnCheliang()
-{
-	// TODO: ÔÚ´ËÌí¼ÓÃüÁî´¦Àí³ÌĞò´úÂë
-	isTestju=!isTestju;
-	mOSG->isTestju(isTestju);
-}
-
-
-void CMy3DSmartCityView::OnUpdateCheliang(CCmdUI *pCmdUI)
-{
-	// TODO: ÔÚ´ËÌí¼ÓÃüÁî¸üĞÂÓÃ»§½çÃæ´¦Àí³ÌĞò´úÂë
-	pCmdUI->SetCheck(isTestju);
-
-	if(isTestju==false&&isTestAera==false)
+	void CMy3DSmartCityView::OnCheliang()
 	{
-		//pCmdUI->SetCheck(0);
-		pCmdUI->Enable(true);
+		// TODO: ÔÚ´ËÌí¼ÓÃüÁî´¦Àí³ÌĞò´úÂë
+		isTestju=!isTestju;
+		mOSG->isTestju(isTestju);
 	}
-	else if(isTestAera==false&&isTestju==true)
+
+
+	void CMy3DSmartCityView::OnUpdateCheliang(CCmdUI *pCmdUI)
 	{
-		//pCmdUI->SetCheck(1);
-		pCmdUI->Enable(true);
+		// TODO: ÔÚ´ËÌí¼ÓÃüÁî¸üĞÂÓÃ»§½çÃæ´¦Àí³ÌĞò´úÂë
+		pCmdUI->SetCheck(isTestju);
+
+		if(isTestju==false&&isTestAera==false)
+		{
+			//pCmdUI->SetCheck(0);
+			pCmdUI->Enable(true);
+		}
+		else if(isTestAera==false&&isTestju==true)
+		{
+			//pCmdUI->SetCheck(1);
+			pCmdUI->Enable(true);
+		}
+		else if(isTestAera==true&&isTestju==false)
+		{
+			//pCmdUI->SetCheck(0);
+			pCmdUI->Enable(false);
+		}
 	}
-	else if(isTestAera==true&&isTestju==false)
+
+
+	void CMy3DSmartCityView::OnCeliangarea()
 	{
-		//pCmdUI->SetCheck(0);
-		pCmdUI->Enable(false);
+		// TODO: ÔÚ´ËÌí¼ÓÃüÁî´¦Àí³ÌĞò´úÂë
+		isTestAera=!isTestAera;
+		mOSG->isTestAera(isTestAera);
 	}
-}
 
 
-void CMy3DSmartCityView::OnCeliangarea()
-{
-	// TODO: ÔÚ´ËÌí¼ÓÃüÁî´¦Àí³ÌĞò´úÂë
-	isTestAera=!isTestAera;
-	mOSG->isTestAera(isTestAera);
-}
-
-
-void CMy3DSmartCityView::OnUpdateCeliangarea(CCmdUI *pCmdUI)
-{
-	// TODO: ÔÚ´ËÌí¼ÓÃüÁî¸üĞÂÓÃ»§½çÃæ´¦Àí³ÌĞò´úÂë
-	pCmdUI->SetCheck(isTestAera);
-	if(isTestju==false&&isTestAera==false)
+	void CMy3DSmartCityView::OnUpdateCeliangarea(CCmdUI *pCmdUI)
 	{
-		pCmdUI->Enable(true);
+		// TODO: ÔÚ´ËÌí¼ÓÃüÁî¸üĞÂÓÃ»§½çÃæ´¦Àí³ÌĞò´úÂë
+		pCmdUI->SetCheck(isTestAera);
+		if(isTestju==false&&isTestAera==false)
+		{
+			pCmdUI->Enable(true);
+		}
+		else if(isTestju==false&&isTestAera==true)
+		{
+			pCmdUI->Enable(true);
+		}
+		else if(isTestAera==false&&isTestju==true)
+		{
+			pCmdUI->Enable(false);
+		}
 	}
-	else if(isTestju==false&&isTestAera==true)
-	{
-		pCmdUI->Enable(true);
-	}
-	else if(isTestAera==false&&isTestju==true)
-	{
-		pCmdUI->Enable(false);
-	}
-}
 
 
-
-=======
 	void CMy3DSmartCityView::OnShuipingjingjufenxion()
 	{
 		// TODO: ÔÚ´ËÌí¼ÓÃüÁî´¦Àí³ÌĞò´úÂë
 		MessageBoxA(_T("Çëµ¥»÷Ñ¡È¡¹ÜÏß"),_T("¹ÜÏßÑ¡È¡"));
 		mOSG->isHSpacingStart=true;
 	}
->>>>>>> parent of 5503c20... Revert "è®¡ç®—æ°´å¹³å‡€è·..."

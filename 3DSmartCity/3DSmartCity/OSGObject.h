@@ -18,14 +18,11 @@
 #include "FlowDirectionDialog.h"
 #include "TrackPipeDialog.h"
 #include "VSection.h"
-<<<<<<< HEAD
 #include "EventHandlerDistance.h"
 #include "DisDlg.h"
 #include "EventRect.h"
-=======
 #include "HSpacing.h"
 
->>>>>>> parent of 5503c20... Revert "计算水平净距..."
 using namespace osgEarth;
 class COSGObject
 {

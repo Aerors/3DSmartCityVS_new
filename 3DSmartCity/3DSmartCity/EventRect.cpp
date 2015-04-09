@@ -304,7 +304,7 @@ bool CEventRect::handle(const osgGA::GUIEventAdapter& ea,osgGA::GUIActionAdapter
 						//polygon->addDrawable(geom);
 						//viewer->getSceneData()->asGroup()->addChild(polygon);
 										
-						//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+						//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿?
 
 				}
 				}

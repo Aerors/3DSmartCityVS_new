@@ -73,8 +73,8 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
-    <IncludePath>D:\OSG\include;D:\osgEarth\osgearth-2.6\include;C:\Program Files\PostgreSQL\9.3\include;$(IncludePath)</IncludePath>
-    <LibraryPath>C:\Program Files\PostgreSQL\9.3\lib;D:\osgEarth\osgearth-2.6\lib;D:\OSG\lib;$(LibraryPath)</LibraryPath>
+    <IncludePath>D:\OSG\include;D:\osgEarth\osgearth-2.6\include;d:\Program Files\PostgreSQL\9.3\include;$(IncludePath)</IncludePath>
+    <LibraryPath>d:\Program Files\PostgreSQL\9.3\lib;D:\osgEarth\osgearth-2.6\lib;D:\OSG\lib;$(LibraryPath)</LibraryPath>
     <EmbedManifest>false</EmbedManifest>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">

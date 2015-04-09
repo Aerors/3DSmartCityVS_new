@@ -83,16 +83,16 @@ public:
 	afx_msg void OnLiuxiangfenxion();
 	afx_msg void OnZongduanfenxion();
 	afx_msg void OnClose();
-<<<<<<< HEAD
+
 	afx_msg void OnZhuizongfenxion();
 	afx_msg void OnCheliang();
 	afx_msg void OnUpdateCheliang(CCmdUI *pCmdUI);
 	afx_msg void OnCeliangarea();
 	afx_msg void OnUpdateCeliangarea(CCmdUI *pCmdUI);
-=======
+
 	afx_msg void OnLiantongfenxion();
 	afx_msg void OnShuipingjingjufenxion();
->>>>>>> parent of 5503c20... Revert "计算水平净距..."
+
 };
 
 #ifndef _DEBUG  // 3DSmartCityView.cpp �еĵ��԰汾

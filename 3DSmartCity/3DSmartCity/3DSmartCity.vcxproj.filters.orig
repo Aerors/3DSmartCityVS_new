@@ -250,7 +250,6 @@
     <ClInclude Include="ColorGradient.h">
       <Filter>头文件</Filter>
     </ClInclude>
-<<<<<<< HEAD
     <ClInclude Include="DisDlg.h">
       <Filter>头文件</Filter>
     </ClInclude>
@@ -258,13 +257,11 @@
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="EventRect.h">
-=======
     <ClInclude Include="TrackPipeDialog.h">
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="TrackPipeHandler.h">
->>>>>>> f06d3159e5853ceff21abddd8a7f6a0fe49a42f0
-      <Filter>头文件</Filter>
+          <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -304,6 +301,7 @@
     <ClCompile Include="makeSql.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+
     <ClCompile Include="AddClick.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
@@ -412,7 +410,6 @@
     <ClCompile Include="ColorGradient.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-<<<<<<< HEAD
     <ClCompile Include="DisDlg.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
@@ -420,12 +417,12 @@
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="EventRect.cpp">
-=======
+    <Filter>源文件</Filter>
+    </ClCompile>
     <ClCompile Include="TrackPipeDialog.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="TrackPipeHandler.cpp">
->>>>>>> f06d3159e5853ceff21abddd8a7f6a0fe49a42f0
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>

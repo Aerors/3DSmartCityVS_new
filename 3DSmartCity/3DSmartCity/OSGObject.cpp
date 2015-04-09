@@ -14,7 +14,7 @@ COSGObject::COSGObject(HWND hWnd)
 	isHSpacingStart=false;
 	pStatisticDlg =  new StatisticDialog();
 	pFlowDirectionDlg = new FlowDirectionDialog();
-	pTrackPipeDlg = new CTrackPipeDialog();
+	//pTrackPipeDlg = new CTrackPipeDialog();
 	pipes=new map<string ,string>;
 	pipes->insert(pair<string,string>("ysgline_new","ysgpoint_new"));
 }
@@ -111,8 +111,8 @@ void COSGObject::InitCameraConfig()//初始化相机
 	//dc end	流向分析---------------------------------------
 	
 	//dc begin	流向分析---------------------------------------
-	pTrackPipeDlg->Create(IDD_ZHUIZONG);
-	mViewer->addEventHandler(new TrackPipeHandler(&pTrackPipeDlg,mViewer));
+	//pTrackPipeDlg->Create(IDD_ZHUIZONG);
+	//mViewer->addEventHandler(new TrackPipeHandler(&pTrackPipeDlg,mViewer));
 	//dc end	流向分析---------------------------------------
 
 	mViewer->setCamera(camera);
