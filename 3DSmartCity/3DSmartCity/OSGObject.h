@@ -22,6 +22,10 @@
 #include "TrackPipeDialog.h"
 #include "VSection.h"
 #include "BaoguanDlg.h"
+#include "EventHandlerDistance.h"
+#include "DisDlg.h"
+#include "EventRect.h"
+#include "HSpacing.h"
 
 using namespace osgEarth;
 class COSGObject
@@ -59,6 +63,10 @@ public:
 	bool isDrawLineStart;
 	osg::ref_ptr<osg::Group> mCSLine;
 	//---end hengduanfenxi
+
+	//水平净距;songweiwang
+	bool isHSpacingStart;
+	//end---水平净距;songweiwang
 
 	//纵断面分析---songweiwang;	
 	bool isVsectionStart;	
@@ -107,6 +115,16 @@ private:
 public:
 	void pipeView(void);
 	void buildingView(void);
+
+	//量算
+	CDisDlg *disdlg;
+	void adddis();
+public:
+	osg::ref_ptr<CEventHandlerDistance> eh;
+	osg::ref_ptr<CEventRect> er;
+	void isTestju(bool isTestju);
+	void isTestAera(bool isTestAera);
+
 
 };
 

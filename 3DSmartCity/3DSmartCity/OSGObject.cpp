@@ -11,9 +11,10 @@ COSGObject::COSGObject(HWND hWnd)
 	isDrawLineStart=false;
 	closeWindows=false;
 	isVsectionStart=false;
+	isHSpacingStart=false;
 	pStatisticDlg =  new StatisticDialog();
 	pFlowDirectionDlg = new FlowDirectionDialog();
-	pTrackPipeDlg = new CTrackPipeDialog();
+	//pTrackPipeDlg = new CTrackPipeDialog();
 	pipes=new map<string ,string>;
 	pipes->insert(pair<string,string>("ysgline_new","ysgpoint_new"));
 
@@ -94,6 +95,11 @@ void COSGObject::InitCameraConfig()//初始化相机
 	mViewer->addEventHandler(new VSection(mapNode, mViewer,&isVsectionStart));
 	//end	纵断面分析  songweiwang;
 
+	//begin 水平净距分析  songweiwang;
+	mViewer->addEventHandler(new HSpacing(mapNode, mViewer,&isHSpacingStart));
+	//end	水平净距分析  songweiwang;
+
+
 	//dc begin	管线统计---------------------------------------
 	pStatisticDlg->Create(IDD_TONGJI);
 	pRectNodeGroup = new osg::Group;
@@ -107,8 +113,8 @@ void COSGObject::InitCameraConfig()//初始化相机
 	//dc end	流向分析---------------------------------------
 	
 	//dc begin	流向分析---------------------------------------
-	pTrackPipeDlg->Create(IDD_ZHUIZONG);
-	mViewer->addEventHandler(new TrackPipeHandler(&pTrackPipeDlg,mViewer));
+	//pTrackPipeDlg->Create(IDD_ZHUIZONG);
+	//mViewer->addEventHandler(new TrackPipeHandler(&pTrackPipeDlg,mViewer));
 	//dc end	流向分析---------------------------------------
 
 	mViewer->setCamera(camera);
@@ -119,12 +125,25 @@ void COSGObject::InitCameraConfig()//初始化相机
 	mViewer->getCamera()->setNearFarRatio(0.000003f);
 
 	mViewer->addEventHandler(new osgGA::StateSetManipulator(mViewer->getCamera()->getOrCreateStateSet()));
+<<<<<<< HEAD
 
 	//---爆管分析---
 	bgDlg->Create(IDD_DIALOG_BAOGUAN);
 	bgDlg->initDlgToGetOSGParam(mapNode,&em,mViewer,mRoot);
 	//---爆管分析---
 
+=======
+	//量算,距离
+
+	disdlg=new CDisDlg();
+	disdlg->Create(IDD_DisDlg);
+	disdlg->initDlg(mLabels,mapNode);
+	eh=new CEventHandlerDistance(mapNode,&disdlg,&closeWindows);
+	mViewer->addEventHandler(eh);
+	//面积
+	er=new CEventRect(mapNode,&disdlg);
+	mViewer->addEventHandler(er);
+>>>>>>> a93b08406e5826c314c30c58dc7168643e0d11dc
 }
 void COSGObject::PreFrameUpdate()
 {
@@ -349,8 +368,44 @@ void COSGObject::addFlag()
 		addlg->ShowWindow(SW_NORMAL);
 	}	
 }
+<<<<<<< HEAD
 
 void COSGObject::initBgDlg()
 {
 	bgDlg->ShowWindow(SW_NORMAL);
 }
+=======
+//量算距离
+void COSGObject::isTestju(bool isTestju)
+{
+	theApp.NeedModify=TRUE;
+	while(!theApp.CanModify)Sleep(1);
+
+	eh->isStartTest(isTestju);
+	theApp.NeedModify=FALSE;
+
+}
+//量算面积
+void COSGObject::isTestAera(bool isTestAera)
+{
+	theApp.NeedModify=TRUE;
+	while(!theApp.CanModify)Sleep(1);
+	er->isStartTestArea(isTestAera);
+	theApp.NeedModify=FALSE;
+
+}
+//添加量算弹出对话框
+void COSGObject::adddis()
+{
+	if (!disdlg->IsWindowVisible())
+	{
+		if (disdlg==NULL)
+		{
+			disdlg=new CDisDlg();
+			disdlg->Create(IDD_DisDlg);
+			disdlg->initDlg(mLabels,mapNode);			
+		}		
+		disdlg->ShowWindow(SW_NORMAL);
+	}	
+}
+>>>>>>> a93b08406e5826c314c30c58dc7168643e0d11dc

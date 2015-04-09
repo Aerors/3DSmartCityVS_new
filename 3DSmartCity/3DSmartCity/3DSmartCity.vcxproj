@@ -68,6 +68,7 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
+<<<<<<< HEAD
     <IncludePath>D:\OSG\include;D:\osgEarth\osgearth-2.6\include;E:\Program Files\PostgreSQL\9.3\include;$(IncludePath)</IncludePath>
     <LibraryPath>E:\Program Files\PostgreSQL\9.3\lib;D:\osgEarth\osgearth-2.6\lib;D:\OSG\lib;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
@@ -75,6 +76,15 @@
     <LinkIncremental>true</LinkIncremental>
     <IncludePath>D:\OSG\include;D:\osgEarth\osgearth-2.6\include;E:\Program Files\PostgreSQL\9.3\include;$(IncludePath)</IncludePath>
     <LibraryPath>E:\Program Files\PostgreSQL\9.3\lib;D:\osgEarth\osgearth-2.6\lib;D:\OSG\lib;$(LibraryPath)</LibraryPath>
+=======
+    <IncludePath>D:\OSG\include;D:\osgEarth\osgearth-2.6\include;C:\Program Files\PostgreSQL\9.3\include;$(IncludePath)</IncludePath>
+    <LibraryPath>C:\Program Files\PostgreSQL\9.3\lib;D:\osgEarth\osgearth-2.6\lib;D:\OSG\lib;$(LibraryPath)</LibraryPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <LinkIncremental>true</LinkIncremental>
+    <IncludePath>D:\OSG\include;D:\osgEarth\osgearth-2.6\include;d:\Program Files\PostgreSQL\9.3\include;$(IncludePath)</IncludePath>
+    <LibraryPath>d:\Program Files\PostgreSQL\9.3\lib;D:\osgEarth\osgearth-2.6\lib;D:\OSG\lib;$(LibraryPath)</LibraryPath>
+>>>>>>> a93b08406e5826c314c30c58dc7168643e0d11dc
     <EmbedManifest>false</EmbedManifest>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -251,11 +261,16 @@
     <ClInclude Include="CSection.h" />
     <ClInclude Include="CSectionDlg.h" />
     <ClInclude Include="DBConnection.h" />
+    <ClInclude Include="DisDlg.h" />
+    <ClInclude Include="EventHandlerDistance.h" />
+    <ClInclude Include="EventRect.h" />
     <ClInclude Include="FlowDirectionDialog.h" />
     <ClInclude Include="FlowDirectionHandler.h" />
     <ClInclude Include="HeadFiles.h" />
     <ClInclude Include="HighLight.h" />
     <ClInclude Include="HighLightVisitor.h" />
+    <ClInclude Include="HSpacing.h" />
+    <ClInclude Include="HSPACINGDLG.h" />
     <ClInclude Include="MainFrm.h" />
     <ClInclude Include="makeSql.h" />
     <ClInclude Include="OSGObject.h" />
@@ -309,10 +324,15 @@
     <ClCompile Include="CSection.cpp" />
     <ClCompile Include="CSectionDlg.cpp" />
     <ClCompile Include="DBConnection.cpp" />
+    <ClCompile Include="DisDlg.cpp" />
+    <ClCompile Include="EventHandlerDistance.cpp" />
+    <ClCompile Include="EventRect.cpp" />
     <ClCompile Include="FlowDirectionDialog.cpp" />
     <ClCompile Include="FlowDirectionHandler.cpp" />
     <ClCompile Include="HighLight.cpp" />
     <ClCompile Include="HighLightVisitor.cpp" />
+    <ClCompile Include="HSpacing.cpp" />
+    <ClCompile Include="HSPACINGDLG.cpp" />
     <ClCompile Include="MainFrm.cpp" />
     <ClCompile Include="makeSql.cpp" />
     <ClCompile Include="OSGObject.cpp" />

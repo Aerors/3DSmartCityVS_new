@@ -250,10 +250,25 @@
     <ClInclude Include="ColorGradient.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="DisDlg.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="EventHandlerDistance.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="EventRect.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
     <ClInclude Include="TrackPipeDialog.h">
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="TrackPipeHandler.h">
+        <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="HSpacing.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="HSPACINGDLG.h">
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="Analyze.h">
@@ -411,10 +426,25 @@
     <ClCompile Include="ColorGradient.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="DisDlg.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="EventHandlerDistance.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="EventRect.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
     <ClCompile Include="TrackPipeDialog.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="TrackPipeHandler.cpp">
+        <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="HSpacing.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="HSPACINGDLG.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="Analyze.cpp">
