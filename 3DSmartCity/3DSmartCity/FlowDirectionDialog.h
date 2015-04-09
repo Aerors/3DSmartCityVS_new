@@ -2,6 +2,7 @@
 #include "afxcmn.h"
 #include "resource.h"
 #include "afxcolorbutton.h"
+#include "afxwin.h"
 // FlowDirectionDialog ¶Ô»°¿ò
 
 class FlowDirectionDialog : public CDialogEx
@@ -23,4 +24,5 @@ public:
 	CListCtrl m_list;
 	CMFCColorButton mColorPicker;
 //	CMFCColorButton mEndColorPicker;
+	CEdit mEdit;
 };

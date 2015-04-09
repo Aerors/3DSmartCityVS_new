@@ -1,29 +1,32 @@
 #include "StdAfx.h"
-#include "FlowDirectionHandler.h"
+#include "TrackPipeHandler.h"
 #include "DBConnection.h"
 #include "HighLightVisitor.h"
 #include "makeSql.h"
 #include "HighLightVisitor.h"
 #include "ColorGradient.h"
 
-FlowDirectionHandler::FlowDirectionHandler(void)
+TrackPipeHandler::TrackPipeHandler(void)
 {
 }
 
-FlowDirectionHandler::FlowDirectionHandler(FlowDirectionDialog** ppFlowDlg,osgViewer::Viewer* mViewer)
+
+TrackPipeHandler::~TrackPipeHandler(void)
 {
-	this->ppFlowDlg = ppFlowDlg;
+}
+
+
+
+TrackPipeHandler::TrackPipeHandler(CTrackPipeDialog** ppTrackDlg,osgViewer::Viewer* mViewer)
+{
+	this->ppTrackDlg = ppTrackDlg;
 	this->mViewer = mViewer;
 }
 
 
-FlowDirectionHandler::~FlowDirectionHandler(void)
+bool TrackPipeHandler::handle(const osgGA::GUIEventAdapter& ea,osgGA::GUIActionAdapter& aa)
 {
-}
-
-bool FlowDirectionHandler::handle(const osgGA::GUIEventAdapter& ea,osgGA::GUIActionAdapter& aa)
-{
-	if((*ppFlowDlg)->IsWindowVisible())
+	if((*ppTrackDlg)->IsWindowVisible())
 	{
 		switch(ea.getEventType())
 		{
@@ -41,7 +44,7 @@ bool FlowDirectionHandler::handle(const osgGA::GUIEventAdapter& ea,osgGA::GUIAct
 }
 
 
-void FlowDirectionHandler::Pick(float x,float y )
+void TrackPipeHandler::Pick(float x,float y )
 {
 	osgUtil::LineSegmentIntersector::Intersections intersection;
 	//x , y 坐标值，intersection存放与法线相交的节点以及相交的节点路径等相关信息的列表
@@ -73,7 +76,7 @@ void FlowDirectionHandler::Pick(float x,float y )
 									osg::Vec4Array* tmpColorArray = dynamic_cast<osg::Vec4Array*>(tmpGeom->getColorArray());
 									if(tmpColorArray)
 									{
-										COLORREF cref = (*ppFlowDlg)->mColorPicker.GetColor();
+										COLORREF cref = (*ppTrackDlg)->mColorPicker.GetColor();
 										BYTE r = GetRValue(cref);
 										BYTE g = GetGValue(cref);
 										BYTE b = GetBValue(cref);
@@ -91,7 +94,7 @@ void FlowDirectionHandler::Pick(float x,float y )
 								DBConnection reader;
 								makeSql ms;
 								reader.ConnectToDB("localhost","5432","HRBPipe","postgres","123456");
-								string sql = ms.trackPipeSql(nd->getName());
+								string sql = ms.flowDirectionSql(nd->getName());
 								PGresult* res = reader.ExecSQL(const_cast<char*>(sql.c_str()));
 								
 								int field_num=PQnfields(res);
@@ -102,26 +105,26 @@ void FlowDirectionHandler::Pick(float x,float y )
 								{
 									CString cs;
 									cs.Format("共%d条管线！",tuple_num);
-									(*ppFlowDlg)->mEdit.SetWindowTextA(cs);
+									(*ppTrackDlg)->mEdit.SetWindowTextA(cs);
 								}
 
 								//初始化list
 								{
-									(*ppFlowDlg)->m_list.DeleteAllItems();
+									(*ppTrackDlg)->m_List.DeleteAllItems();
 									for(int j=0;j<field_num;++j)
 									{
-										(*ppFlowDlg)->m_list.InsertColumn(j,PQfname(res,j), LVCFMT_LEFT, 80);
+										(*ppTrackDlg)->m_List.InsertColumn(j,PQfname(res,j), LVCFMT_LEFT, 80);
 									}
 
 									for(int j=0;j<tuple_num;++j)
 									{
 										char* s = PQgetvalue(res,j,0);
-										int nRow = (*ppFlowDlg)->m_list.InsertItem(j, s);//插入行
+										int nRow = (*ppTrackDlg)->m_List.InsertItem(j, s);//插入行
 
 										for(int k=1;k<field_num;++k)
 										{
 											char* t = PQgetvalue(res,j,k);
-											(*ppFlowDlg)->m_list.SetItemText(j, k, t);//设置数据
+											(*ppTrackDlg)->m_List.SetItemText(j, k, t);//设置数据
 
 											if(1==k)
 											{

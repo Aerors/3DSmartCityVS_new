@@ -83,6 +83,7 @@ public:
 	afx_msg void OnLiuxiangfenxion();
 	afx_msg void OnZongduanfenxion();
 	afx_msg void OnClose();
+	afx_msg void OnZhuizongfenxion();
 	afx_msg void OnCheliang();
 	afx_msg void OnUpdateCheliang(CCmdUI *pCmdUI);
 	afx_msg void OnCeliangarea();

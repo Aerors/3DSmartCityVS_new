@@ -49,6 +49,7 @@ IMPLEMENT_DYNCREATE(CMy3DSmartCityView, CView)
 		ON_COMMAND(ID_LIUXIANGFENXION, &CMy3DSmartCityView::OnLiuxiangfenxion)
 		ON_COMMAND(ID_ZONGDUANFENXION, &CMy3DSmartCityView::OnZongduanfenxion)
 		ON_WM_CLOSE()
+		ON_COMMAND(ID_ZHUIZONGFENXION, &CMy3DSmartCityView::OnZhuizongfenxion)
 		ON_COMMAND(ID_CHELIANG, &CMy3DSmartCityView::OnCheliang)
 		ON_UPDATE_COMMAND_UI(ID_CHELIANG, &CMy3DSmartCityView::OnUpdateCheliang)
 		ON_COMMAND(ID_CELIANGAREA, &CMy3DSmartCityView::OnCeliangarea)
@@ -239,6 +240,11 @@ IMPLEMENT_DYNCREATE(CMy3DSmartCityView, CView)
 		mOSG->initFlowDirectionDlg();
 	}
 
+	void CMy3DSmartCityView::OnZhuizongfenxion()
+	{
+		mOSG->initTrackPipeDlg();
+	}
+
 	void CMy3DSmartCityView::OnPipeOn()
 	{
 		// TODO: 在此添加命令处理程序代码
@@ -364,3 +370,6 @@ void CMy3DSmartCityView::OnUpdateCeliangarea(CCmdUI *pCmdUI)
 		pCmdUI->Enable(false);
 	}
 }
+
+
+

@@ -51,3 +51,14 @@ string makeSql::flowDirectionSql(string bzm)
 	string sql = "select * from flow_direction('" + tbname + "','" + b + "')";
 	return sql;
 }
+
+string makeSql::trackPipeSql(string bzm)
+{
+	//flow_direction('ysgline_new','28028')
+	
+	int x = bzm.find(' ');
+	string tbname = bzm.substr(0,x-0);
+	string b = bzm.substr(x+1);
+	string sql = "select * from track_direction('" + tbname + "','" + b + "')";
+	return sql;
+}

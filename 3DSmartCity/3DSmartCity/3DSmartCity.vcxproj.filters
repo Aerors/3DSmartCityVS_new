@@ -259,6 +259,12 @@
     <ClInclude Include="EventRect.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="TrackPipeDialog.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="TrackPipeHandler.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="3DSmartCity.cpp">
@@ -412,6 +418,12 @@
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="EventRect.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="TrackPipeDialog.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="TrackPipeHandler.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>

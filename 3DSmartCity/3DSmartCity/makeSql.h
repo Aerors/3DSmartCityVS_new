@@ -14,6 +14,7 @@ public:
 	string makePolySql(const double topleftlat,const double topleftlon,const double bottomrightlat,const double bottomrightlon);
 	string makeLineSql(const double topleftlat,const double topleftlon,const double bottomrightlat,const double bottomrightlon);
 	string flowDirectionSql(string bzm);
+	string trackPipeSql(string bzm);
 private:
 	string mTableName;
 };
