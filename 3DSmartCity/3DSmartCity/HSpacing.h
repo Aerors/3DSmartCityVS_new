@@ -23,6 +23,10 @@ public:
 	string bzm1,bzm2;
 	bool isFirstTime;
 	bool *isStart;
+<<<<<<< HEAD
+=======
+
+>>>>>>> parent of 5503c20... Revert "计算水平净距..."
 	osgUtil::LineSegmentIntersector::Intersections intersection;
 
 	MapNode *mapNode;

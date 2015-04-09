@@ -49,11 +49,16 @@ IMPLEMENT_DYNCREATE(CMy3DSmartCityView, CView)
 		ON_COMMAND(ID_LIUXIANGFENXION, &CMy3DSmartCityView::OnLiuxiangfenxion)
 		ON_COMMAND(ID_ZONGDUANFENXION, &CMy3DSmartCityView::OnZongduanfenxion)
 		ON_WM_CLOSE()
+<<<<<<< HEAD
 		ON_COMMAND(ID_ZHUIZONGFENXION, &CMy3DSmartCityView::OnZhuizongfenxion)
 		ON_COMMAND(ID_CHELIANG, &CMy3DSmartCityView::OnCheliang)
 		ON_UPDATE_COMMAND_UI(ID_CHELIANG, &CMy3DSmartCityView::OnUpdateCheliang)
 		ON_COMMAND(ID_CELIANGAREA, &CMy3DSmartCityView::OnCeliangarea)
 		ON_UPDATE_COMMAND_UI(ID_CELIANGAREA, &CMy3DSmartCityView::OnUpdateCeliangarea)
+=======
+		ON_COMMAND(ID_LIANTONGFENXION, &CMy3DSmartCityView::OnLiantongfenxion)
+		ON_COMMAND(ID_SHUIPINGJINGJUFENXION, &CMy3DSmartCityView::OnShuipingjingjufenxion)
+>>>>>>> parent of 5503c20... Revert "ËÆ°ÁÆóÊ∞¥Âπ≥ÂáÄË∑ù..."
 	END_MESSAGE_MAP()
 
 	// CMy3DSmartCityView ππ‘Ï/Œˆππ
@@ -222,8 +227,8 @@ IMPLEMENT_DYNCREATE(CMy3DSmartCityView, CView)
 		CView::OnDestroy();
 		if(mOSG!=0) delete mOSG;
 		WaitForSingleObject(mThreadHandle,1000);
-	CloseHandle(mThreadHandle);
-	//_endthreadex(mThreadHandle);
+		CloseHandle(mThreadHandle);
+		//_endthreadex(mThreadHandle);
 
 		// TODO: ‘⁄¥À¥¶ÃÌº”œ˚œ¢¥¶¿Ì≥Ã–Ú¥˙¬Î
 	}
@@ -281,18 +286,18 @@ IMPLEMENT_DYNCREATE(CMy3DSmartCityView, CView)
 	}
 
 
-void CMy3DSmartCityView::OnHengduanfenxion()
-{
-	if(IDYES==MessageBoxA(_T(" «∑Òª≠œﬂ—°»°π‹œﬂ?"),_T("π‹œﬂ—°»°"),MB_ICONQUESTION+MB_YESNO))  
-	{  
-		mOSG->isDrawLineStart=true;
-	}  
-	else
+	void CMy3DSmartCityView::OnHengduanfenxion()
 	{
-		mOSG->isDrawLineStart=false;
-	}
+		if(IDYES==MessageBoxA(_T(" «∑Òª≠œﬂ—°»°π‹œﬂ?"),_T("π‹œﬂ—°»°"),MB_ICONQUESTION+MB_YESNO))  
+		{  
+			mOSG->isDrawLineStart=true;
+		}  
+		else
+		{
+			mOSG->isDrawLineStart=false;
+		}
 
-}	
+	}	
 
 	void CMy3DSmartCityView::OnZongduanfenxion()
 	{
@@ -301,11 +306,20 @@ void CMy3DSmartCityView::OnHengduanfenxion()
 	}	
 
 
+	void CMy3DSmartCityView::OnClose()
+	{
+		CView::OnClose();
+	}
 
 
+	void CMy3DSmartCityView::OnLiantongfenxion()
+	{
+		// TODO: ‘⁄¥ÀÃÌº”√¸¡Ó¥¶¿Ì≥Ã–Ú¥˙¬Î
+
+	}
 
 
-
+<<<<<<< HEAD
 void CMy3DSmartCityView::OnClose()
 {
 	
@@ -373,3 +387,11 @@ void CMy3DSmartCityView::OnUpdateCeliangarea(CCmdUI *pCmdUI)
 
 
 
+=======
+	void CMy3DSmartCityView::OnShuipingjingjufenxion()
+	{
+		// TODO: ‘⁄¥ÀÃÌº”√¸¡Ó¥¶¿Ì≥Ã–Ú¥˙¬Î
+		MessageBoxA(_T("«Îµ•ª˜—°»°π‹œﬂ"),_T("π‹œﬂ—°»°"));
+		mOSG->isHSpacingStart=true;
+	}
+>>>>>>> parent of 5503c20... Revert "ËÆ°ÁÆóÊ∞¥Âπ≥ÂáÄË∑ù..."

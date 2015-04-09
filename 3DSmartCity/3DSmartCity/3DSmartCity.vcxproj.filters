@@ -250,6 +250,7 @@
     <ClInclude Include="ColorGradient.h">
       <Filter>头文件</Filter>
     </ClInclude>
+<<<<<<< HEAD
     <ClInclude Include="DisDlg.h">
       <Filter>头文件</Filter>
     </ClInclude>
@@ -263,6 +264,12 @@
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="TrackPipeHandler.h">
+=======
+    <ClInclude Include="HSpacing.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="HSPACINGDLG.h">
+>>>>>>> parent of 5503c20... Revert "计算水平净距..."
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>
@@ -411,6 +418,7 @@
     <ClCompile Include="ColorGradient.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+<<<<<<< HEAD
     <ClCompile Include="DisDlg.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
@@ -424,6 +432,12 @@
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="TrackPipeHandler.cpp">
+=======
+    <ClCompile Include="HSpacing.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="HSPACINGDLG.cpp">
+>>>>>>> parent of 5503c20... Revert "计算水平净距..."
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>

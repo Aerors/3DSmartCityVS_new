@@ -18,9 +18,14 @@
 #include "FlowDirectionDialog.h"
 #include "TrackPipeDialog.h"
 #include "VSection.h"
+<<<<<<< HEAD
 #include "EventHandlerDistance.h"
 #include "DisDlg.h"
 #include "EventRect.h"
+=======
+#include "HSpacing.h"
+
+>>>>>>> parent of 5503c20... Revert "è®¡ç®—æ°´å¹³å‡€è·..."
 using namespace osgEarth;
 class COSGObject
 {
@@ -57,6 +62,10 @@ public:
 	bool isDrawLineStart;
 	osg::ref_ptr<osg::Group> mCSLine;
 	//---end hengduanfenxi
+
+	//Ë®Æ½¾»¾à;songweiwang
+	bool isHSpacingStart;
+	//end---Ë®Æ½¾»¾à;songweiwang
 
 	//×İ¶ÏÃæ·ÖÎö---songweiwang;	
 	bool isVsectionStart;	
