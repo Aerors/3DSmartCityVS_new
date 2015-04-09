@@ -26,13 +26,6 @@ bool CCSection::handle( const osgGA::GUIEventAdapter& ea, osgGA::GUIActionAdapte
 	if (*isDrawLineStart)
 	{
 		linesGroup->removeChild(0,1);
-		for(std::vector<std::string>::iterator it=bzms.begin();it!=bzms.end();it++)
-		{
-			std::string bzm("ysgline_new "+ *(it));
-			osg::Node* root= mViewer->getSceneData();
-			HighLightVisitor hlv(bzm,true,osg::Vec4f(0.0,0.0,1.0,0.8));
-			root->accept(hlv);
-		}
 		if (!clickTime && ea.getEventType() == osgGA::GUIEventAdapter::LEFT_MOUSE_BUTTON )
 		{	
 			clickTime=true;
@@ -66,7 +59,7 @@ bool CCSection::handle( const osgGA::GUIEventAdapter& ea, osgGA::GUIActionAdapte
 
 			//在startPoint和endPoint之间画线
 			//TODO
-			osgEarth::Symbology::Geometry* path = new LineString();
+			Geometry* path = new LineString();
 			path->push_back(osg::Vec3d(startPoint.x(),startPoint.y(),0));   // 
 			path->push_back(osg::Vec3d(endPoint.x(),endPoint.y(),0));	 // 
 
@@ -79,19 +72,13 @@ bool CCSection::handle( const osgGA::GUIEventAdapter& ea, osgGA::GUIActionAdapte
 			Feature* pathFeature = new Feature(path, m_pGeoSRS, pathStyle);
 			pathFeature->geoInterp() = GEOINTERP_GREAT_CIRCLE;//GEOINTERP_RHUMB_LINE;
 			
+
 			FeatureNode* pathNode = new FeatureNode(mapNode, pathFeature);
 			linesGroup->addChild( pathNode );
 			*isDrawLineStart=false;
-			
-			bzms.erase(bzms.begin(),bzms.end());
+
 			findPipes(startPoint,endPoint);
-			for(std::vector<std::string>::iterator it=bzms.begin();it!=bzms.end();it++)
-			{
-				std::string bzm("ysgline_new "+ *(it));
-				osg::Node* root= mViewer->getSceneData();
-				HighLightVisitor hlv(bzm,true);
-				root->accept(hlv);
-			}
+
 			return true;
 		}
 	}
@@ -154,7 +141,6 @@ void CCSection::findPipes(GeoPoint startPoint,GeoPoint endPoint)
 	for (int i=0;i<(*row_num);i++)
 	{
 		strTmp=PQgetvalue(res,i,0);
-		bzms.push_back(strTmp);
 		sectionDlg->listPro.InsertItem(i,strTmp);
 		for (int j=1;j<field_num;j++)
 		{

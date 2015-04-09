@@ -49,8 +49,6 @@ IMPLEMENT_DYNCREATE(CMy3DSmartCityView, CView)
 		ON_COMMAND(ID_LIUXIANGFENXION, &CMy3DSmartCityView::OnLiuxiangfenxion)
 		ON_COMMAND(ID_ZONGDUANFENXION, &CMy3DSmartCityView::OnZongduanfenxion)
 		ON_WM_CLOSE()
-		ON_COMMAND(ID_LIANTONGFENXION, &CMy3DSmartCityView::OnLiantongfenxion)
-		ON_COMMAND(ID_SHUIPINGJINGJUFENXION, &CMy3DSmartCityView::OnShuipingjingjufenxion)
 	END_MESSAGE_MAP()
 
 	// CMy3DSmartCityView 构造/析构
@@ -217,8 +215,8 @@ IMPLEMENT_DYNCREATE(CMy3DSmartCityView, CView)
 		CView::OnDestroy();
 		if(mOSG!=0) delete mOSG;
 		WaitForSingleObject(mThreadHandle,1000);
-		CloseHandle(mThreadHandle);
-		//_endthreadex(mThreadHandle);
+	CloseHandle(mThreadHandle);
+	//_endthreadex(mThreadHandle);
 
 		// TODO: 在此处添加消息处理程序代码
 	}
@@ -271,18 +269,18 @@ IMPLEMENT_DYNCREATE(CMy3DSmartCityView, CView)
 	}
 
 
-	void CMy3DSmartCityView::OnHengduanfenxion()
+void CMy3DSmartCityView::OnHengduanfenxion()
+{
+	if(IDYES==MessageBoxA(_T("是否画线选取管线?"),_T("管线选取"),MB_ICONQUESTION+MB_YESNO))  
+	{  
+		mOSG->isDrawLineStart=true;
+	}  
+	else
 	{
-		if(IDYES==MessageBoxA(_T("是否画线选取管线?"),_T("管线选取"),MB_ICONQUESTION+MB_YESNO))  
-		{  
-			mOSG->isDrawLineStart=true;
-		}  
-		else
-		{
-			mOSG->isDrawLineStart=false;
-		}
+		mOSG->isDrawLineStart=false;
+	}
 
-	}	
+}	
 
 	void CMy3DSmartCityView::OnZongduanfenxion()
 	{
@@ -291,22 +289,14 @@ IMPLEMENT_DYNCREATE(CMy3DSmartCityView, CView)
 	}	
 
 
-	void CMy3DSmartCityView::OnClose()
-	{
-		CView::OnClose();
-	}
 
 
-	void CMy3DSmartCityView::OnLiantongfenxion()
-	{
-		// TODO: 在此添加命令处理程序代码
-
-	}
 
 
-	void CMy3DSmartCityView::OnShuipingjingjufenxion()
-	{
-		// TODO: 在此添加命令处理程序代码
-		MessageBoxA(_T("请单击选取管线"),_T("管线选取"));
-		mOSG->isHSpacingStart=true;
-	}
+
+void CMy3DSmartCityView::OnClose()
+{
+	
+
+	CView::OnClose();
+}

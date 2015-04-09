@@ -3,7 +3,6 @@
 #include "DBConnection.h"
 #include <string>
 #include "CSectionDlg.h"
-#include "HighLightVisitor.h"
 
 class CCSection:public osgGA::GUIEventHandler
 {
@@ -26,7 +25,7 @@ public:
 	DBConnection *DBclass;
 	PGconn *conn;
 	PGresult *res;
-	std::vector<std::string> bzms;//保存上次查询到的标识码
+
 	//CCSectionDlg **sectionDlg;
 	CCSectionDlg *sectionDlg;
 

@@ -17,7 +17,6 @@
 #include "CSection.h"
 #include "FlowDirectionDialog.h"
 #include "VSection.h"
-#include "HSpacing.h"
 
 using namespace osgEarth;
 class COSGObject
@@ -55,10 +54,6 @@ public:
 	bool isDrawLineStart;
 	osg::ref_ptr<osg::Group> mCSLine;
 	//---end hengduanfenxi
-
-	//水平净距;songweiwang
-	bool isHSpacingStart;
-	//end---水平净距;songweiwang
 
 	//纵断面分析---songweiwang;	
 	bool isVsectionStart;	

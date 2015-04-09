@@ -254,8 +254,6 @@
     <ClInclude Include="HeadFiles.h" />
     <ClInclude Include="HighLight.h" />
     <ClInclude Include="HighLightVisitor.h" />
-    <ClInclude Include="HSpacing.h" />
-    <ClInclude Include="HSPACINGDLG.h" />
     <ClInclude Include="MainFrm.h" />
     <ClInclude Include="makeSql.h" />
     <ClInclude Include="OSGObject.h" />
@@ -308,8 +306,6 @@
     <ClCompile Include="FlowDirectionHandler.cpp" />
     <ClCompile Include="HighLight.cpp" />
     <ClCompile Include="HighLightVisitor.cpp" />
-    <ClCompile Include="HSpacing.cpp" />
-    <ClCompile Include="HSPACINGDLG.cpp" />
     <ClCompile Include="MainFrm.cpp" />
     <ClCompile Include="makeSql.cpp" />
     <ClCompile Include="OSGObject.cpp" />
