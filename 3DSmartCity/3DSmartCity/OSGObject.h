@@ -4,10 +4,13 @@
 #include <osgDB/ReadFile>
 #include <osgViewer\api\Win32/GraphicsWindowWin32>
 #include <osgGA/TrackballManipulator>
+
 #include <osgEarth/MapNode>
 #include <osgEarthUtil/EarthManipulator>
 #include <osgEarthUtil/Sky>
 #include <osgEarth/ImageLayer>
+
+
 #include "3DSmartCity.h"
 #include "PipeStatisticHandler.h"
 #include "HeadFiles.h"
@@ -18,6 +21,7 @@
 #include "FlowDirectionDialog.h"
 #include "TrackPipeDialog.h"
 #include "VSection.h"
+#include "BaoguanDlg.h"
 
 using namespace osgEarth;
 class COSGObject
@@ -61,7 +65,14 @@ public:
 
 	//---end zongduanfenxi
 
+
+	//---爆管分析---
+	CBaoguanDlg *bgDlg;
+	void addBgDlg();
+	void initBgDlg();
+	//---爆管分析--- 
 	
+
 public:
 	//dc--管线统计-----------------------------------------------------------------
 	bool ifDoStatistic;
@@ -88,7 +99,7 @@ private:
 	osgViewer::Viewer * mViewer;
 	osg::ref_ptr<osg::Group> mRoot;
 
-	osg::ref_ptr<osgEarth::Util::EarthManipulator> em;
+	osgEarth::Util::EarthManipulator* em;
 	osg::ref_ptr<osgEarth::ImageLayer> china_boundaries;
 	//管线 管点
 private:

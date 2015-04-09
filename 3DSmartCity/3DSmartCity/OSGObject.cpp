@@ -16,6 +16,8 @@ COSGObject::COSGObject(HWND hWnd)
 	pTrackPipeDlg = new CTrackPipeDialog();
 	pipes=new map<string ,string>;
 	pipes->insert(pair<string,string>("ysgline_new","ysgpoint_new"));
+
+	bgDlg = new CBaoguanDlg();
 }
 
 
@@ -117,6 +119,11 @@ void COSGObject::InitCameraConfig()//初始化相机
 	mViewer->getCamera()->setNearFarRatio(0.000003f);
 
 	mViewer->addEventHandler(new osgGA::StateSetManipulator(mViewer->getCamera()->getOrCreateStateSet()));
+
+	//---爆管分析---
+	bgDlg->Create(IDD_DIALOG_BAOGUAN);
+	bgDlg->initDlgToGetOSGParam(mapNode,&em,mViewer,mRoot);
+	//---爆管分析---
 
 }
 void COSGObject::PreFrameUpdate()
@@ -341,4 +348,9 @@ void COSGObject::addFlag()
 		}		
 		addlg->ShowWindow(SW_NORMAL);
 	}	
+}
+
+void COSGObject::initBgDlg()
+{
+	bgDlg->ShowWindow(SW_NORMAL);
 }
