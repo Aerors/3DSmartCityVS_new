@@ -75,7 +75,6 @@ osg::NodeList VSection::findPipe(double x, double y,osgUtil::LineSegmentIntersec
 	string bzm;
 
 	//delete
-	int inti=0,intj=0,intk=0;
 	bool breakFlag=false;
 	//x , y 坐标值，intersection存放与法线相交的节点以及相交的节点路径等相关信息的列表
 	if (viewer->computeIntersections(x,y,intersection))//使用computeIntersections计算当前场景中单击到了那些模型，结果存放在结果集内
@@ -85,16 +84,12 @@ osg::NodeList VSection::findPipe(double x, double y,osgUtil::LineSegmentIntersec
 		for (osgUtil::LineSegmentIntersector::Intersections::iterator hiter=intersection.begin();hiter!=intersection.end();++hiter)
 		{
 			if (breakFlag) break;
-			inti++;
 			if (!hiter->nodePath.empty())
 			{
 				const osg::NodePath& np = hiter->nodePath;
 				for (int i = np.size()-1, intk=0;i>=0;--i)
 				{
 					if (breakFlag) break;
-					intj++;
-					intk++;
-					
 					osg::Node* nd = dynamic_cast<osg::Node*>(np[i]);
 					if (nd)
 					{
@@ -124,8 +119,8 @@ osg::NodeList VSection::findPipe(double x, double y,osgUtil::LineSegmentIntersec
 
 									for(int k=1;k<field_num;++k)
 									{
-										char* strTmp = PQgetvalue(res,j,k);
-										if (j>2 && j<7)
+										strTmp = PQgetvalue(res,j,k);
+										if (k>2 && k<7)
 										{
 											strTmp[8]='\0';
 										}

@@ -250,6 +250,12 @@
     <ClInclude Include="ColorGradient.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="HSpacing.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="HSPACINGDLG.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="3DSmartCity.cpp">
@@ -394,6 +400,12 @@
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="ColorGradient.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="HSpacing.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="HSPACINGDLG.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>
